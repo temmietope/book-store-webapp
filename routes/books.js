@@ -22,9 +22,41 @@ router.get("/", auth, async (req, res) => {
 // @ route  POST api/books
 // @desc    Add new book
 // @access  Private
-router.post("/", (req, res) => {
-  res.send("Add book");
-});
+router.post(
+  "/",
+  [
+    auth,
+    [
+      check("title", "Title is required")
+        .not()
+        .isEmpty(),
+      check("author", "Author is required")
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { title, author, description, type } = req.body;
+
+    try {
+      const newBook = new Book({
+        title,
+        author,
+        description,
+        type,
+        user: req.user.id
+      });
+      const book = await newBook.save();
+      res.json(book);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  }
+);
 
 // @ route  PUT api/books/:id
 // @desc    Update book
