@@ -5,15 +5,11 @@ const BookSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "users"
   },
-  name: {
+  title: {
     type: String,
     required: true
   },
   author: {
-    type: String,
-    required: true
-  },
-  email: {
     type: String,
     required: true
   },
