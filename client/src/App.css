@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .app {
   width: 100%;
   height: 100%;
@@ -22,27 +21,3 @@
 .container {
   width: 100%;
 }
-=======
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
->>>>>>> 6820400b639a6ad417c290bcacc713274240accc
