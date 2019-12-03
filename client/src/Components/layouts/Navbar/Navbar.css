@@ -1,0 +1,27 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(243, 159, 173);
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  padding: 0 5%;
+  box-sizing: border-box;
+  color: white;
+  font-family: DM Sans;
+}
+.navbar i {
+  color: white;
+  margin-right: 5px;
+}
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+
+}
+.navbar li {
+    margin-right: 10px;
+
+}
