@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
+import BookContext from "../../Context/book/bookContext";
 
 const BookItem = ({ book }) => {
+  const bookContext = useContext(BookContext);
+  const { deleteBook } = bookContext;
   const { id, title, description, author, genre } = book;
-  const genreColor = type => {
+  const genreColor = genre => {
     if (genre === "horror") {
       return "type type-blue";
     }
@@ -16,6 +19,9 @@ const BookItem = ({ book }) => {
     if (genre === "general") {
       return "type type-green";
     }
+  };
+  const onDelete = () => {
+    deleteBook(id);
   };
   return (
     <div className="book-card">
@@ -33,7 +39,7 @@ const BookItem = ({ book }) => {
         <button className="btn edit-btn">
           <i className="far fa-edit" />
         </button>
-        <button className="btn delete-btn">
+        <button className="btn delete-btn" onClick={onDelete}>
           <i className="far fa-trash-alt" />
         </button>
       </p>

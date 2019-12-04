@@ -48,7 +48,9 @@ const BookState = props => {
     dispatch({ type: ADD_BOOK, payload: book });
   };
   //Delete Book
-
+  const deleteBook = id => {
+    dispatch({ type: DELETE_BOOK, payload: id });
+  };
   //SetCurrent Book
 
   //Clear Current Book
@@ -63,7 +65,8 @@ const BookState = props => {
     <BookContext.Provider
       value={{
         books: state.books,
-        addBook
+        addBook,
+        deleteBook
       }}
     >
       {props.children}
