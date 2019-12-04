@@ -5,12 +5,16 @@ import "./Books.css";
 
 const Books = () => {
   const bookContext = useContext(BookContext);
-  const { books } = bookContext;
+  const { books, filtered } = bookContext;
+
+  if (books.length === 0) {
+    return <div>You have no book</div>;
+  }
   return (
     <div className="book-wrapper">
-      {books.map(book => (
-        <BookItem key={book.id} book={book} />
-      ))}
+      {filtered !== null
+        ? filtered.map(book => <BookItem key={book.id} book={book} />)
+        : books.map(book => <BookItem key={book.id} book={book} />)}
     </div>
   );
 };

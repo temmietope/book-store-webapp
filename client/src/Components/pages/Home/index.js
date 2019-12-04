@@ -2,6 +2,7 @@ import React from "react";
 import Books from "../../books/Books";
 import "./Home.css";
 import BookForm from "../../../Context/book/BookForm";
+import BookFilter from "../../../Context/book/BookFilter";
 
 const Home = () => {
   return (
@@ -12,9 +13,9 @@ const Home = () => {
         <div className="book-form">
           <BookForm />
         </div>
-        <div>
+        <div className="book-list">
+          <BookFilter />
           <Books />
-          {/* filter components */}
         </div>
       </div>
     </div>

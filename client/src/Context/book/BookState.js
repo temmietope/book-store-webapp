@@ -38,7 +38,8 @@ const BookState = props => {
         genre: "horror"
       }
     ],
-    current: null
+    current: null,
+    filtered: null
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -65,19 +66,26 @@ const BookState = props => {
     dispatch({ type: UPDATE_BOOK, payload: book });
   };
   //Filter Books
-
+  const filterBooks = text => {
+    dispatch({ type: FILTER_BOOKS, payload: text });
+  };
   //Clear Filter
-
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
   return (
     <BookContext.Provider
       value={{
         books: state.books,
         current: state.current,
+        filtered: state.filtered,
         addBook,
         deleteBook,
         setCurrent,
         clearCurrent,
-        updateBook
+        updateBook,
+        filterBooks,
+        clearFilter
       }}
     >
       {props.children}

@@ -30,7 +30,7 @@
   align-items: flex-start;
   box-sizing: border-box;
   width: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
 }
 .home-wrapper .book-form h2 {
   font-size: 28px;
@@ -95,7 +95,10 @@
   border: none;
   padding: 10px;
 }
-
+.home-wrapper .book-form form .submit-book-div {
+  width: 100%;
+  margin-top: 10px;
+}
 .home-wrapper .book-form form .submit-book {
   width: 100%;
   border: none;
@@ -106,12 +109,17 @@
   font-family: DM Sans;
   font-weight: bolder;
   outline: none;
+  color: white;
+  font-size: 15px;
 }
 .home-wrapper .book-form form .submit-book button {
   outline: none;
   color: white;
   background: rgb(243, 159, 173);
-  width: 50%;
+  width: 100%;
+}
+.home-wrapper .book-form form .clear-book-div {
+  width: 100%;
 }
 .home-wrapper .book-form form .clear-book {
   width: 100%;
@@ -123,4 +131,36 @@
   font-family: DM Sans;
   font-weight: bolder;
   outline: none;
+  color: white;
+  font-size: 15px;
+}
+.home-wrapper .filter-form {
+  width: 70%;
+  padding: 0;
+  box-sizing: border-box;
+}
+.home-wrapper .filter-form input {
+  padding: 10px;
+  width: 100%;
+  border: none;
+  box-sizing: border-box;
+  font-family: DM Sans;
+  font-size: 15px;
+  outline: none;
+}
+.home-wrapper .filter-form ::placeholder {
+  font-family: DM Sans;
+  font-size: 15px;
+  color: rgba(128, 128, 128, 0.767);
+}
+.home-wrapper .filter-form input:focus {
+  color: red;
+  outline: none;
+  border-bottom: 2px solid red;
+}
+.book-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
 }
