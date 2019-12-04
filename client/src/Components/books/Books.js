@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import BookContext from "../../Context/book/bookContext";
 import BookItem from "./BookItem";
 import "./Books.css";
@@ -12,9 +13,19 @@ const Books = () => {
   }
   return (
     <div className="book-wrapper">
-      {filtered !== null
-        ? filtered.map(book => <BookItem key={book.id} book={book} />)
-        : books.map(book => <BookItem key={book.id} book={book} />)}
+      <TransitionGroup>
+        {filtered !== null
+          ? filtered.map(book => (
+              <CSSTransition key={book.id} timeout={500} classNames="item">
+                <BookItem book={book} />
+              </CSSTransition>
+            ))
+          : books.map(book => (
+              <CSSTransition key={book.id} timeout={500} classNames="item">
+                <BookItem book={book} />
+              </CSSTransition>
+            ))}
+      </TransitionGroup>
     </div>
   );
 };

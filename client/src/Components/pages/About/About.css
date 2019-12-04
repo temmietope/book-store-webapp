@@ -1,15 +1,30 @@
 .about {
-    text-align: center;
-    font-family: DM Sans;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  font-family: DM Sans;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.about-wrapper{
-    width: 80%;
+.about-wrapper {
+  width: 80%;
 }
-.version{
-    padding: 10px;
-    border-radius: 2px;
+.version {
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.item-enter {
+  opacity: 0;
+}
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+.item-exit {
+  opacity: 0;
+}
+.item-exit-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
 }
