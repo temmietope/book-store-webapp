@@ -1,8 +1,22 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import BookContext from "../../Context/book/bookContext";
 
 const BookForm = () => {
   const bookContext = useContext(BookContext);
+  const { addBook, current, clearCurrent, updateBook } = bookContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setBook(current);
+    } else {
+      setBook({
+        title: "",
+        author: "",
+        description: "",
+        genre: "general"
+      });
+    }
+  }, [bookContext, current]);
   const [book, setBook] = useState({
     title: "",
     author: "",
@@ -16,17 +30,19 @@ const BookForm = () => {
   };
   const onSubmit = e => {
     e.preventDefault();
-    bookContext.addBook(book);
-    setBook({
-      title: "",
-      author: "",
-      description: "",
-      genre: "general"
-    });
+    if(current=== null){
+      addBook(book);
+    }else{
+      updateBook(book)
+    }
+    clearAll()
+  };
+  const clearAll = () => {
+    clearCurrent();
   };
   return (
     <form onSubmit={onSubmit}>
-      <h2>Add Book</h2>
+      <h2>{current ? "Edit Book information" : "Add Book"}</h2>
       <div className="input-new-book">
         <input
           type="text"
@@ -56,6 +72,7 @@ const BookForm = () => {
             onChange={e => {
               onChange(e);
             }}
+            value={genre}
           >
             <option value="general">General</option>
             <option value="kids">Kids</option>
@@ -64,9 +81,20 @@ const BookForm = () => {
         </div>
       </div>
 
-      <div>
-        <input type="submit" value="Add Book" className="submit-book" />
+      <div className="submit-book-div">
+        <input
+          type="submit"
+          value={current ? "Update Book" : "Add Book"}
+          className="submit-book"
+        />
       </div>
+      {current && (
+        <div className="clear-book-div">
+          <button onClick={clearAll} className="clear-book">
+            Clear
+          </button>
+        </div>
+      )}
     </form>
   );
 };

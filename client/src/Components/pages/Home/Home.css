@@ -86,8 +86,6 @@
   outline: none;
   color: rgba(128, 128, 128, 0.767);
   width: 100%;
-
-
 }
 .home-wrapper .book-form form .input-new-book .select-genre select {
   outline: none;
@@ -96,8 +94,6 @@
   width: 100%;
   border: none;
   padding: 10px;
-
-
 }
 
 .home-wrapper .book-form form .submit-book {
@@ -110,12 +106,21 @@
   font-family: DM Sans;
   font-weight: bolder;
   outline: none;
-
-
 }
 .home-wrapper .book-form form .submit-book button {
   outline: none;
   color: white;
   background: rgb(243, 159, 173);
   width: 50%;
+}
+.home-wrapper .book-form form .clear-book {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  background: red;
+  font-family: DM Sans;
+  font-weight: bolder;
+  outline: none;
 }

@@ -20,6 +20,23 @@ export default (state, action) => {
         ...state,
         books: state.books.filter(book => book.id !== action.payload)
       };
+    case UPDATE_BOOK:
+      return {
+        ...state,
+        books: state.books.map(book => book.id === action.payload.id
+          ? action.payload
+          : book) 
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null
+      };
     default:
       return state;
   }

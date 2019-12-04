@@ -37,7 +37,8 @@ const BookState = props => {
           "The village called Abraka has a lot of interesting features",
         genre: "horror"
       }
-    ]
+    ],
+    current: null
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -52,11 +53,17 @@ const BookState = props => {
     dispatch({ type: DELETE_BOOK, payload: id });
   };
   //SetCurrent Book
-
+  const setCurrent = book => {
+    dispatch({ type: SET_CURRENT, payload: book });
+  };
   //Clear Current Book
-
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
   //Update Book
-
+  const updateBook = book => {
+    dispatch({ type: UPDATE_BOOK, payload: book });
+  };
   //Filter Books
 
   //Clear Filter
@@ -65,8 +72,12 @@ const BookState = props => {
     <BookContext.Provider
       value={{
         books: state.books,
+        current: state.current,
         addBook,
-        deleteBook
+        deleteBook,
+        setCurrent,
+        clearCurrent,
+        updateBook
       }}
     >
       {props.children}
