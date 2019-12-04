@@ -2,18 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const BookItem = ({ book }) => {
-  const { id, title, description, author, type } = book;
-  const typeColor = type => {
-    if (type === "horror") {
+  const { id, title, description, author, genre } = book;
+  const genreColor = type => {
+    if (genre === "horror") {
       return "type type-blue";
     }
-    if (type === "kids") {
+    if (genre === "kids") {
       return "type type-yellow";
     }
-    if (type === "romance") {
+    if (genre === "romance") {
       return "type type-red";
     }
-    if (type === "general") {
+    if (genre === "general") {
       return "type type-green";
     }
   };
@@ -26,7 +26,7 @@ const BookItem = ({ book }) => {
       <span className="author">
         {" "}
         By: {"  "}
-        {author} <small className={typeColor(type)}>{type}</small>
+        {author} <small className={genreColor(genre)}>{genre}</small>
       </span>
       <span className="description">{description}</span>
       <p className="buttons">

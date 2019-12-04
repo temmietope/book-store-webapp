@@ -17,7 +17,7 @@ const BookSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  type: {
+  genre: {
     type: String,
     default: "general"
   },

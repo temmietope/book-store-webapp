@@ -40,14 +40,14 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { title, author, description, type } = req.body;
+    const { title, author, description, genre } = req.body;
 
     try {
       const newBook = new Book({
         title,
         author,
         description,
-        type,
+        genre,
         user: req.user.id
       });
       const book = await newBook.save();

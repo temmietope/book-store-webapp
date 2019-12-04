@@ -20,21 +20,22 @@ const BookState = props => {
         title: "Josh is here",
         author: "Fire",
         description: "this is the story a boy named Josh",
-        type: "general"
+        genre: "general"
       },
       {
         id: 2,
         title: "Irish girl",
         author: "Ndinneka",
         description: "5 yr old girl gives up on life",
-        type: "kids"
+        genre: "kids"
       },
       {
         id: 3,
         title: "Abraka",
         author: "julius",
-        description: "The village called Abraka has a lot of interesting features",
-        type: "horror"
+        description:
+          "The village called Abraka has a lot of interesting features",
+        genre: "horror"
       }
     ]
   };
@@ -42,7 +43,10 @@ const BookState = props => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
 
   //Add Book
-
+  const addBook = book => {
+    book.id = uuid.v4();
+    dispatch({ type: ADD_BOOK, payload: book });
+  };
   //Delete Book
 
   //SetCurrent Book
@@ -58,7 +62,8 @@ const BookState = props => {
   return (
     <BookContext.Provider
       value={{
-        books: state.books
+        books: state.books,
+        addBook
       }}
     >
       {props.children}
@@ -66,4 +71,4 @@ const BookState = props => {
   );
 };
 
-export default BookState
+export default BookState;
