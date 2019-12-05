@@ -9,24 +9,29 @@ import Login from "./Components/auth/Login";
 
 import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
+import AlertState from "./Context/alert/AlertState";
+import Alerts from "./Components/layouts/Alerts";
 
 const App = () => {
   return (
     <AuthState>
       <BookState>
-        <Router>
-          <div className="app">
-            <Navbar />
-            <div className="container">
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
+        <AlertState>
+          <Router>
+            <div className="app">
+              <Navbar />
+              <div className="container">
+                <Alerts/>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/about" component={About} />
+                  <Route exact path="/register" component={Register} />
+                  <Route exact path="/login" component={Login} />
+                </Switch>
+              </div>
             </div>
-          </div>
-        </Router>
+          </Router>
+        </AlertState>
       </BookState>
     </AuthState>
   );

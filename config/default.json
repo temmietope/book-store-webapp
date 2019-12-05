@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://temitope:gl0r10u51@bookstore-z3kqh.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret": "secret"
-}

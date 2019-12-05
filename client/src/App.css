@@ -72,3 +72,26 @@
   background: rgb(243, 159, 173);
   outline: none;
 }
+.alert {
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  font-weight: bolder;
+  font-size: 20px;
+  color: white;
+  z-index: 1;
+  position: fixed;
+}
+.alert i {
+  margin-right: 10px;
+}
+.alert .danger {
+  background: rgb(194, 6, 6);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.alert .success {
+  background: rgb(40, 221, 40);
+  padding: 10px;
+  box-sizing: border-box;
+}
