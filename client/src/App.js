@@ -4,6 +4,9 @@ import "./App.css";
 import Navbar from "./Components/layouts/Navbar/index";
 import Home from "./Components/pages/Home";
 import About from "./Components/pages/About";
+import Register from "./Components/auth/Register";
+import Login from "./Components/auth/Login";
+
 import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
 
@@ -18,6 +21,8 @@ const App = () => {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
               </Switch>
             </div>
           </div>

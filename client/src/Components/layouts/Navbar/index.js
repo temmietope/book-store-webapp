@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom"
-import "./Navbar.css"
+import { NavLink } from "react-router-dom";
+import "./Navbar.css";
 
 const Navbar = ({ title, icon }) => {
   return (
@@ -10,12 +10,26 @@ const Navbar = ({ title, icon }) => {
         <i className={icon} /> {title}
       </h1>
       <ul>
-          <li>
-              <Link to="/" className="link">Home</Link>
-          </li>
-          <li>
-              <Link to="/about" className="link">About</Link>
-          </li>
+        <li>
+          <NavLink to="/" className="link" activeClassName="active">
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/about" className="link" activeClassName="active">
+            About
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/register" className="link" activeClassName="active">
+            Register
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/login" className="link" activeClassName="active">
+            Login
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

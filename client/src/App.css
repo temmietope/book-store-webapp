@@ -14,10 +14,61 @@
   color: white;
   text-align: center;
 }
-.link{
+.link {
   text-decoration: none;
   color: inherit;
 }
 .container {
   width: 100%;
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  margin: 5% 0;
+}
+.register h1 {
+  font-size: 45px;
+  color: rgba(65, 60, 60, 0.877);
+}
+.register form {
+  width: 40vw;
+}
+.register .form-group {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 20px;
+}
+.register .form-group input {
+  height: 30px;
+  outline: none;
+  font-size: 16px;
+  color: rgba(65, 60, 60, 0.877);
+  border: none;
+}
+.register .form-group input:focus {
+  color: rgb(243, 159, 173);
+  border: none;
+  border-bottom: 2px solid rgb(243, 159, 173);
+}
+.register .form-group label {
+  color: rgba(65, 60, 60, 0.877);
+  margin-bottom: 10px;
+}
+.register .font-pink {
+  color: rgb(243, 159, 173);
+}
+.register .register-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bolder;
+  font-size: 18px;
+  color: white;
+  background: rgb(243, 159, 173);
+  outline: none;
 }
