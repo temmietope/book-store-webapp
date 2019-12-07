@@ -34,6 +34,7 @@ router.post(
       let user = await User.findOne({ email });
       if (user) {
         res.status(400).json({ msg: "User already exists" });
+        console.log("user already exists");
       }
       user = new User({
         name,
@@ -50,9 +51,10 @@ router.post(
           id: user.id
         }
       };
+      const { JWT_SECRET } = process.env;
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        JWT_SECRET,
         {
           expiresIn: 360000
         },
