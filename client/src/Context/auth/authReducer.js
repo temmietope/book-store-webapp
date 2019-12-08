@@ -10,15 +10,23 @@ import {
 } from "../types";
 export default (state, action) => {
   switch (action.type) {
-    case REGISTER_SUCCESS:
-      localStorage.setItem("token", action.payload.token);
+    case USER_LOADED:
       return {
         ...state,
-        ...action.payload,
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload
+      };
+    case REGISTER_SUCCESS:
+      localStorage.setItem("token", action.payload);
+      return {
+        ...state,
+        token: action.payload,
         isAuthenticated: true,
         loading: false
       };
     case REGISTER_FAIL:
+    case AUTH_ERROR:
       localStorage.removeItem("token");
       return {
         ...state,

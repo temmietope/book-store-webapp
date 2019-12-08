@@ -6,12 +6,16 @@ import Home from "./Components/pages/Home";
 import About from "./Components/pages/About";
 import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
+import Alerts from "./Components/layouts/Alerts";
 
 import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
 import AlertState from "./Context/alert/AlertState";
-import Alerts from "./Components/layouts/Alerts";
+import setAuthToken from "./utils/setAuthToken";
 
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 const App = () => {
   return (
     <AuthState>
@@ -21,7 +25,7 @@ const App = () => {
             <div className="app">
               <Navbar />
               <div className="container">
-                <Alerts/>
+                <Alerts />
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />

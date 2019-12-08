@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import AuthContext from "./authContext";
 import axios from "axios";
 import authReducer from "./authReducer";
+import setAuthToken from "../../utils/setAuthToken";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -25,6 +26,33 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   //Load User
+  const loadUser = async () => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    // //@todo - load token into global headers
+    try {
+      const res = await axios.get("/api/auth");
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: AUTH_ERROR });
+    }
+  };
+
+  // const getUserFromToken = token => {
+  //   const [header, payload] = token.split(".");
+  //   const user = JSON.parse(atob(payload));
+  //   console.log("user");
+  //   console.log(user.user.id);
+  //   dispatch({
+  //     type: USER_LOADED,
+  //     payload: user.user.id
+  //   });
+  // };
 
   //Register User
   const register = async formData => {
@@ -35,11 +63,13 @@ const AuthState = props => {
     };
     try {
       const res = await axios.post("/api/users", formData, config);
-
+      let token = res.data.token;
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: res.data
+        payload: token
       });
+      loadUser();
+      // getUserFromToken(token);
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
@@ -64,7 +94,9 @@ const AuthState = props => {
         user: state.user,
         error: state.error,
         register,
-        clearErrors
+        loadUser,
+        clearErrors,
+        // getUserFromToken
       }}
     >
       {props.children}
