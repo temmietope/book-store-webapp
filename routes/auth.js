@@ -45,6 +45,7 @@ router.post(
       if (!isMatch) {
         return res.status(400).json({ msg: "Invalid Credentials" });
       }
+      const { JWT_SECRET } = process.env;
       const payload = {
         user: {
           id: user.id
@@ -52,7 +53,7 @@ router.post(
       };
       jwt.sign(
         payload,
-        config.get("jwtSecret"),
+        JWT_SECRET,
         {
           expiresIn: 360000
         },
