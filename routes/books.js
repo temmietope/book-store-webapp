@@ -61,9 +61,58 @@ router.post(
 // @ route  PUT api/books/:id
 // @desc    Update book
 // @access  Private
-router.put("/:id", (req, res) => {
-  res.send("update book");
-});
+router.put(
+  "/:id",
+  [
+    auth,
+    [
+      check("title", "Title is required")
+        .not()
+        .isEmpty(),
+      check("author", "Author is required")
+        .not()
+        .isEmpty()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    const { title, author, description, genre } = req.body;
+    let id = req.params.id;
+    try {
+      const book = await Book.findById(id);
+      (book.title = title),
+        (book.author = author),
+        (book.description = description),
+        (book.genre = genre);
+
+      const updatedBook = await book.save();
+      res.json(updatedBook);
+
+
+      // const updatedBook = {
+      //   title,
+      //   author,
+      //   description,
+      //   genre,
+      //   id: id
+      //   // user: req.user.id
+      // };
+
+      // console.log(updatedBook);
+      // console.log(id);
+      // const book = await Book.updateOne({ id }, updatedBook);
+      // res.json(book)
+      // console.log(book)
+      // res.json(book);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send("Server Error");
+    }
+  }
+);
 
 // @ route  DELETE api/books/:id
 // @desc    Delete book

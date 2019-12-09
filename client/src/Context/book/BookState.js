@@ -68,6 +68,25 @@ const BookState = props => {
       payload: id
     });
   };
+  //Update Book
+  const updateBook = async book => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    console.log(book)
+    try {
+      const res = await axios.put(`api/books/${book._id}`, book, config);
+      console.log(res.data)
+      dispatch({ type: UPDATE_BOOK, payload: res.data });
+    } catch (err) {
+      dispatch({
+        type: BOOK_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
   //Clear Books
   const clearBooks = () => {
     dispatch({ type: CLEAR_BOOKS });
@@ -80,10 +99,7 @@ const BookState = props => {
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
   };
-  //Update Book
-  const updateBook = book => {
-    dispatch({ type: UPDATE_BOOK, payload: book });
-  };
+  
   //Filter Books
   const filterBooks = text => {
     dispatch({ type: FILTER_BOOKS, payload: text });
