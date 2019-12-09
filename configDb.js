@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const isDevelopment = process.env.NODE_ENV === "development";
 
 const connectDB = async () => {
-  console.log(isDevelopment)
+  console.log(isDevelopment);
   try {
     await mongoose.connect(
       isDevelopment ? process.env.MONGO : process.env.MONGO_ATLAS,
       {
-        useNewUrlParser: true
+        useNewUrlParser: true,
+        useFindAndModify: false
       }
     );
     console.log("MongoDB Connected...");

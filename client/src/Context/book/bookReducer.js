@@ -1,31 +1,53 @@
 import {
+  GET_BOOKS,
   ADD_BOOK,
   DELETE_BOOK,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_BOOK,
   FILTER_BOOKS,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  BOOK_ERROR,
+  CLEAR_BOOKS
 } from "../types";
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_BOOKS:
+      return {
+        ...state,
+        books: action.payload,
+        loading: false
+      };
     case ADD_BOOK:
       return {
         ...state,
-        books: [...state.books, action.payload]
+        books: [...state.books, action.payload],
+        loading: false
       };
     case DELETE_BOOK:
       return {
         ...state,
-        books: state.books.filter(book => book.id !== action.payload)
+        books: state.books.filter(book => {
+          return book._id !== action.payload;
+        }),
+        loading: false
+      };
+    case CLEAR_BOOKS:
+      return {
+        ...state,
+        books: null,
+        filtered: null,
+        error: null,
+        current: null
       };
     case UPDATE_BOOK:
       return {
         ...state,
         books: state.books.map(book =>
           book.id === action.payload.id ? action.payload : book
-        )
+        ),
+        loading: false
       };
     case SET_CURRENT:
       return {
@@ -36,6 +58,11 @@ export default (state, action) => {
       return {
         ...state,
         current: null
+      };
+    case BOOK_ERROR:
+      return {
+        ...state,
+        error: action.payload
       };
     case FILTER_BOOKS:
       return {

@@ -5,7 +5,7 @@ import BookContext from "../../Context/book/bookContext";
 const BookItem = ({ book }) => {
   const bookContext = useContext(BookContext);
   const { deleteBook, setCurrent, clearCurrent } = bookContext;
-  const { id, title, description, author, genre } = book;
+  const { _id, title, description, author, genre } = book;
   const genreColor = genre => {
     if (genre === "horror") {
       return "type type-blue";
@@ -21,8 +21,8 @@ const BookItem = ({ book }) => {
     }
   };
   const onDelete = () => {
-    deleteBook(id);
-    clearCurrent()
+    deleteBook(_id);
+    clearCurrent();
   };
   return (
     <div className="book-card">

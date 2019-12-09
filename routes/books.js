@@ -68,8 +68,14 @@ router.put("/:id", (req, res) => {
 // @ route  DELETE api/books/:id
 // @desc    Delete book
 // @access  Private
-router.delete("/:id", (req, res) => {
-  res.send("delete book");
+router.delete("/:id", async (req, res) => {
+  try {
+    await Book.findByIdAndRemove(req.params.id);
+    res.sendStatus(200);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
 });
 
 module.exports = router;
