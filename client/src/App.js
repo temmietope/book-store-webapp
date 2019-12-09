@@ -7,6 +7,7 @@ import About from "./Components/pages/About";
 import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
 import Alerts from "./Components/layouts/Alerts";
+import PrivateRoute from "./Components/routing/PrivateRoute";
 
 import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
@@ -27,7 +28,7 @@ const App = () => {
               <div className="container">
                 <Alerts />
                 <Switch>
-                  <Route exact path="/" component={Home} />
+                  <PrivateRoute exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
