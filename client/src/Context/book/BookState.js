@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
 import axios from "axios";
-import uuid from "uuid";
 import BookContext from "./bookContext";
 import bookReducer from "./bookReducer";
 import {
@@ -75,10 +74,10 @@ const BookState = props => {
         "Content-Type": "application/json"
       }
     };
-    console.log(book)
+    console.log(book);
     try {
       const res = await axios.put(`api/books/${book._id}`, book, config);
-      console.log(res.data)
+      console.log(res.data);
       dispatch({ type: UPDATE_BOOK, payload: res.data });
     } catch (err) {
       dispatch({
@@ -99,7 +98,7 @@ const BookState = props => {
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
   };
-  
+
   //Filter Books
   const filterBooks = text => {
     dispatch({ type: FILTER_BOOKS, payload: text });
