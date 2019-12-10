@@ -74,10 +74,8 @@ const BookState = props => {
         "Content-Type": "application/json"
       }
     };
-    console.log(book);
     try {
       const res = await axios.put(`api/books/${book._id}`, book, config);
-      console.log(res.data);
       dispatch({ type: UPDATE_BOOK, payload: res.data });
     } catch (err) {
       dispatch({
