@@ -1,11 +1,13 @@
 import {
   GET_BOOKS,
+  GET_ALL_BOOKS,
   ADD_BOOK,
   DELETE_BOOK,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_BOOK,
   FILTER_BOOKS,
+  FILTER_ALL_BOOKS,
   CLEAR_FILTER,
   BOOK_ERROR,
   CLEAR_BOOKS
@@ -17,6 +19,12 @@ export default (state, action) => {
       return {
         ...state,
         books: action.payload,
+        loading: false
+      };
+    case GET_ALL_BOOKS:
+      return {
+        ...state,
+        allBooks: action.payload,
         loading: false
       };
     case ADD_BOOK:
@@ -72,10 +80,19 @@ export default (state, action) => {
           return book.title.match(regex) || book.author.match(regex);
         })
       };
+    case FILTER_ALL_BOOKS:
+      return {
+        ...state,
+        filteredAll: state.allBooks.filter(book => {
+          const regex = new RegExp(`${action.payload}`, "gi");
+          return book.title.match(regex) || book.author.match(regex);
+        })
+      };
     case CLEAR_FILTER:
       return {
         ...state,
-        filtered: null
+        filtered: null,
+        filteredAll: null
       };
     default:
       return state;

@@ -1,0 +1,126 @@
+.my-book-wrapper {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4%;
+}
+.my-book {
+  width: 85%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.my-book .book-form {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 50%;
+  margin-bottom: 100px;
+}
+.my-book .book-form h2 {
+  font-size: 28px;
+  text-align: left;
+  margin: 0;
+  color: rgba(65, 60, 60, 0.877);
+}
+.my-book .book-form form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  box-sizing: border-box;
+}
+.my-book .book-form form .input-new-book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  box-sizing: border-box;
+  width: 70%;
+}
+.my-book .book-form form .input-new-book input {
+  width: 100%;
+  padding: 7px;
+  margin: 5px;
+  border: none;
+  outline: none;
+  font-family: DM Sans;
+  font-size: 15px;
+}
+.my-book.book-form form .input-new-book input:focus {
+  color: red;
+  outline: none;
+  border-bottom: 2px solid red;
+}
+.my-book .book-form form .input-new-book ::placeholder {
+  font-family: DM Sans;
+  font-size: 15px;
+  color: rgba(128, 128, 128, 0.767);
+}
+.my-book .book-form form .input-new-book h5 {
+  margin: 0;
+  font-size: 15px;
+  margin-right: auto;
+  margin-bottom: 5px;
+}
+
+.my-book .book-form form .input-new-book .select-genre {
+  margin: 0;
+  margin-right: auto;
+  outline: none;
+  color: rgba(128, 128, 128, 0.767);
+  width: 100%;
+}
+.my-book .book-form form .input-new-book .select-genre select {
+  outline: none;
+  font-size: 15px;
+  color: rgba(128, 128, 128, 0.767);
+  width: 100%;
+  border: none;
+  padding: 10px;
+}
+.my-book .book-form form .submit-book-div {
+  width: 100%;
+  margin-top: 10px;
+}
+.my-book .book-form form .submit-book {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  background: rgb(243, 159, 173);
+  font-family: DM Sans;
+  font-weight: bolder;
+  outline: none;
+  color: white;
+  font-size: 15px;
+}
+.my-book .book-form form .submit-book button {
+  outline: none;
+  color: white;
+  background: rgb(243, 159, 173);
+  width: 100%;
+}
+.my-book .book-form form .clear-book-div {
+  width: 100%;
+}
+.my-book .book-form form .clear-book {
+  width: 100%;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  background: red;
+  font-family: DM Sans;
+  font-weight: bolder;
+  outline: none;
+  color: white;
+  font-size: 15px;
+}

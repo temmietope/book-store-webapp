@@ -1,9 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import BookContext from "../../Context/book/bookContext";
+import { withRouter } from "react-router-dom";
 
-const BookItem = ({ book }) => {
+const BookItem = ({ book, ...props }) => {
   const bookContext = useContext(BookContext);
+  const [home, setHome] = useState(false);
+
+  useEffect(() => {
+    if (props.history.location.pathname !== "/") {
+      setHome(true);
+    }
+  }, [props.history.location.pathname]);
   const { deleteBook, setCurrent, clearCurrent } = bookContext;
   const { _id, title, description, author, genre } = book;
   const genreColor = genre => {
@@ -36,14 +44,16 @@ const BookItem = ({ book }) => {
         {author} <small className={genreColor(genre)}>{genre}</small>
       </span>
       <span className="description">{description}</span>
-      <p className="buttons">
-        <button className="btn edit-btn" onClick={() => setCurrent(book)}>
-          <i className="far fa-edit" />
-        </button>
-        <button className="btn delete-btn" onClick={onDelete}>
-          <i className="far fa-trash-alt" />
-        </button>
-      </p>
+      {home && (
+        <p className="buttons">
+          <button className="btn edit-btn" onClick={() => setCurrent(book)}>
+            <i className="far fa-edit" />
+          </button>
+          <button className="btn delete-btn" onClick={onDelete}>
+            <i className="far fa-trash-alt" />
+          </button>
+        </p>
+      )}
     </div>
   );
 };
@@ -52,4 +62,4 @@ BookItem.propTypes = {
   book: PropTypes.object.isRequired
 };
 
-export default BookItem;
+export default withRouter(BookItem);

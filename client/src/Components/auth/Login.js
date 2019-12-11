@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../Context/auth/authContext";
 import AlertContext from "../../Context/alert/alertContext";
 
-const Login = (props) => {
+const Login = props => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const { setAlert } = alertContext;
@@ -34,7 +34,7 @@ const Login = (props) => {
       login({
         email,
         password
-      })
+      });
     }
   };
   return (

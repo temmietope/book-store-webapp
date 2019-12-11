@@ -4,6 +4,7 @@ import BookContext from "./bookContext";
 import bookReducer from "./bookReducer";
 import {
   GET_BOOKS,
+  GET_ALL_BOOKS,
   ADD_BOOK,
   DELETE_BOOK,
   BOOK_ERROR,
@@ -12,22 +13,25 @@ import {
   CLEAR_CURRENT,
   UPDATE_BOOK,
   FILTER_BOOKS,
+  FILTER_ALL_BOOKS,
   CLEAR_FILTER
 } from "../types";
 
 const BookState = props => {
   const initialState = {
+    allBooks: null,
     books: null,
     current: null,
     filtered: null,
+    filteredAll: null,
     error: null
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
   //Get Books
-  const getBooks = async () => {
+  const getBooks = async user_id => {
     try {
-      const res = await axios.get("api/books");
+      const res = await axios.get(`api/books/user?id=${user_id}`);
       dispatch({
         type: GET_BOOKS,
         payload: res.data
@@ -39,6 +43,23 @@ const BookState = props => {
       });
     }
   };
+
+  //Get All Books
+  const getAllBooks = async () => {
+    try {
+      const res = await axios.get("api/books/");
+      dispatch({
+        type: GET_ALL_BOOKS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: BOOK_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
   //Add Book
   const addBook = async book => {
     const config = {
@@ -101,6 +122,12 @@ const BookState = props => {
   const filterBooks = text => {
     dispatch({ type: FILTER_BOOKS, payload: text });
   };
+
+  ////Filter All Books
+  const filterAllBooks = text => {
+    dispatch({ type: FILTER_ALL_BOOKS, payload: text });
+  };
+
   //Clear Filter
   const clearFilter = () => {
     dispatch({ type: CLEAR_FILTER });
@@ -108,17 +135,21 @@ const BookState = props => {
   return (
     <BookContext.Provider
       value={{
+        allBooks: state.allBooks,
         books: state.books,
         current: state.current,
         filtered: state.filtered,
+        filteredAll: state.filteredAll,
         error: state.error,
         getBooks,
+        getAllBooks,
         addBook,
         deleteBook,
         setCurrent,
         clearCurrent,
         updateBook,
         filterBooks,
+        filterAllBooks,
         clearFilter,
         clearBooks
       }}

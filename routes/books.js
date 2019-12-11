@@ -8,10 +8,27 @@ const Book = require("../models/Book");
 
 // @ route  GET api/books
 // @desc    Get all users books
-// @access  Private
-router.get("/", auth, async (req, res) => {
+// @access  Public
+router.get("/", async (req, res) => {
   try {
-    const books = await Book.find({ user: req.user.id }).sort({ date: -1 });
+    const books = await Book.find().sort({ date: -1 });
+    res.json(books);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @ route  GET api/books
+// @desc    Get all users books
+// @access  Private
+router.get("/user", auth, async (req, res) => {
+  const params = {};
+  if (req.query.id) {
+    params.user = req.query.id;
+  }
+  try {
+    const books = await Book.find({ ...params }).sort({ date: -1 });
     res.json(books);
   } catch (err) {
     console.error(err.message);
@@ -90,23 +107,6 @@ router.put(
 
       const updatedBook = await book.save();
       res.json(updatedBook);
-
-
-      // const updatedBook = {
-      //   title,
-      //   author,
-      //   description,
-      //   genre,
-      //   id: id
-      //   // user: req.user.id
-      // };
-
-      // console.log(updatedBook);
-      // console.log(id);
-      // const book = await Book.updateOne({ id }, updatedBook);
-      // res.json(book)
-      // console.log(book)
-      // res.json(book);
     } catch (error) {
       console.log(error);
       res.status(500).send("Server Error");

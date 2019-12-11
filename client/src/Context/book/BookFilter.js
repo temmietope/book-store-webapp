@@ -1,19 +1,29 @@
 import React, { useContext, useRef, useEffect } from "react";
 import BookContext from "../../Context/book/bookContext";
+import { withRouter } from "react-router-dom";
 
-const BookFilter = () => {
+const BookFilter = props => {
   const bookContext = useContext(BookContext);
   const text = useRef("");
-  const { filterBooks, clearFilter, filtered } = bookContext;
+  const {
+    filterBooks,
+    filterAllBooks,
+    clearFilter,
+    filtered,
+    filteredAll
+  } = bookContext;
 
   useEffect(() => {
-    if (filtered === null) {
+    if (filtered || filteredAll === null) {
       text.current.value = "";
     }
   });
   const onChange = e => {
     if (text.current.value !== "") {
-      filterBooks(e.target.value);
+      if (props.history.location.pathname !== "/") {
+        filterBooks(e.target.value);
+      }
+      filterAllBooks(e.target.value);
     } else {
       clearFilter();
     }
@@ -32,4 +42,4 @@ const BookFilter = () => {
   );
 };
 
-export default BookFilter;
+export default withRouter(BookFilter);

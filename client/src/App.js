@@ -13,6 +13,7 @@ import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
 import AlertState from "./Context/alert/AlertState";
 import setAuthToken from "./utils/setAuthToken";
+import MyBooks from "./Components/pages/MyBooks";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -28,10 +29,11 @@ const App = () => {
               <div className="container">
                 <Alerts />
                 <Switch>
-                  <PrivateRoute exact path="/" component={Home} />
+                  <Route exact path="/" component={Home} />
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/my_books" component={MyBooks} />
                 </Switch>
               </div>
             </div>
