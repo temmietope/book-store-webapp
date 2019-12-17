@@ -12,7 +12,14 @@ const BookItem = ({ book, ...props }) => {
       setUserBooksPage(true);
     }
   }, [props.history.location.pathname]);
-  const { deleteBook, setCurrent, clearCurrent } = bookContext;
+  const {
+    deleteBook,
+    setCurrent,
+    clearCurrent,
+    addToCart,
+    cart,
+    books
+  } = bookContext;
   const { _id, title, description, author, genre } = book;
   const genreColor = genre => {
     if (genre === "horror") {
@@ -32,6 +39,9 @@ const BookItem = ({ book, ...props }) => {
     deleteBook(_id);
     clearCurrent();
   };
+  const add = () => {
+    addToCart(book);
+  };
   const renderButtons = () => {
     return (
       <p className="buttons">
@@ -48,7 +58,9 @@ const BookItem = ({ book, ...props }) => {
   const renderBuyNow = () => {
     return (
       <p className="buttons">
-        <button className="add-to-cart">Add to cart</button>
+        <button className="add-to-cart" onClick={add}>
+          Add to cart
+        </button>
       </p>
     );
   };

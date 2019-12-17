@@ -1,8 +1,10 @@
 import {
   GET_BOOKS,
+  GET_CART,
   GET_ALL_BOOKS,
   ADD_BOOK,
   DELETE_BOOK,
+  ADD_TO_CART,
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_BOOK,
@@ -19,6 +21,12 @@ export default (state, action) => {
       return {
         ...state,
         books: action.payload,
+        loading: false
+      };
+    case GET_CART:
+      return {
+        ...state,
+        cart: action.payload,
         loading: false
       };
     case GET_ALL_BOOKS:
@@ -39,6 +47,12 @@ export default (state, action) => {
         books: state.books.filter(book => {
           return book._id !== action.payload;
         }),
+        loading: false
+      };
+    case ADD_TO_CART:
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
         loading: false
       };
     case CLEAR_BOOKS:

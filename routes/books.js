@@ -5,7 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 const Book = require("../models/Book");
-const Cart = require("../models/Cart");
+const CartItem = require("../models/Cart");
 
 // @ route  GET api/books
 // @desc    Get all users books
@@ -31,6 +31,24 @@ router.get("/user", auth, async (req, res) => {
   try {
     const books = await Book.find({ ...params }).sort({ date: -1 });
     res.json(books);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @ route  GET api/books
+// @desc    Get authenticated user cartList
+// @access  Private
+router.get("/cart", auth, async (req, res) => {
+  const params = {};
+
+  if (req.query.id) {
+    params.user = req.query.id;
+  }
+  try {
+    const cartList = await CartItem.find({ ...params }).sort({ date: -1 });
+    res.json(cartList);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -76,24 +94,27 @@ router.post(
   }
 );
 
-
-
 // @ route  POST api/books
 // @desc    Add new item to user's cart
 // @access  Private
 
-router.post("/user/cart", auth, async (req, res) => {
-  const { cart } = req.body;
+router.post("/cart", auth, async (req, res) => {
+  const { title, author, description, genre } = req.body;
   try {
-    const newCartItem = new CartItem(cart);
+    const newCartItem = new CartItem({
+      title,
+      author,
+      description,
+      genre,
+      user: req.user.id
+    });
+
     const cartItem = await newCartItem.save();
     res.json(cartItem);
   } catch (error) {
     res.status(500).send("Server Error");
   }
 });
-
-
 
 // @ route  PUT api/books/:id
 // @desc    Update book

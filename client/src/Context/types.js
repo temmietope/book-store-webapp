@@ -1,4 +1,5 @@
 export const GET_BOOKS = "GET_BOOKS";
+export const GET_CART = "GET_CART";
 export const GET_ALL_BOOKS = "GET_ALL_BOOKS";
 export const ADD_BOOK = "ADD_BOOK";
 export const DELETE_BOOK = "DELETE_BOOK";
@@ -20,3 +21,6 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const ADD_TO_CART= "ADD_TO_CART";
+export const DELETE_FROM_CART= "DELETE_FROM_CART";
+

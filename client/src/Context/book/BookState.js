@@ -4,6 +4,7 @@ import BookContext from "./bookContext";
 import bookReducer from "./bookReducer";
 import {
   GET_BOOKS,
+  GET_CART,
   GET_ALL_BOOKS,
   ADD_BOOK,
   DELETE_BOOK,
@@ -14,7 +15,9 @@ import {
   UPDATE_BOOK,
   FILTER_BOOKS,
   FILTER_ALL_BOOKS,
-  CLEAR_FILTER
+  CLEAR_FILTER,
+  ADD_TO_CART,
+  DELETE_FROM_CART
 } from "../types";
 
 const BookState = props => {
@@ -24,7 +27,8 @@ const BookState = props => {
     current: null,
     filtered: null,
     filteredAll: null,
-    error: null
+    error: null,
+    cart: null
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -34,6 +38,22 @@ const BookState = props => {
       const res = await axios.get(`api/books/user?id=${user_id}`);
       dispatch({
         type: GET_BOOKS,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: BOOK_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
+  //Get User cart
+  const getUserCart = async user_id => {
+    try {
+      const res = await axios.get(`api/books/cart?id=${user_id}`);
+      dispatch({
+        type: GET_CART,
         payload: res.data
       });
     } catch (err) {
@@ -80,6 +100,28 @@ const BookState = props => {
       });
     }
   };
+
+  //Add Book To Cart
+  const addToCart = async book => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    try {
+      const res = await axios.post("api/books/cart", book, config);
+      dispatch({
+        type: ADD_TO_CART,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: BOOK_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
   //Delete Book
   const deleteBook = async id => {
     await axios.delete(`api/books/${id}`);
@@ -141,10 +183,13 @@ const BookState = props => {
         filtered: state.filtered,
         filteredAll: state.filteredAll,
         error: state.error,
+        cart: state.cart,
         getBooks,
+        getUserCart,
         getAllBooks,
         addBook,
         deleteBook,
+        addToCart,
         setCurrent,
         clearCurrent,
         updateBook,
