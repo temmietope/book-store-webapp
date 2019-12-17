@@ -5,6 +5,7 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../models/User");
 const Book = require("../models/Book");
+const Cart = require("../models/Cart");
 
 // @ route  GET api/books
 // @desc    Get all users books
@@ -20,7 +21,7 @@ router.get("/", async (req, res) => {
 });
 
 // @ route  GET api/books
-// @desc    Get all users books
+// @desc    Get authenticated user books
 // @access  Private
 router.get("/user", auth, async (req, res) => {
   const params = {};
@@ -74,6 +75,25 @@ router.post(
     }
   }
 );
+
+
+
+// @ route  POST api/books
+// @desc    Add new item to user's cart
+// @access  Private
+
+router.post("/user/cart", auth, async (req, res) => {
+  const { cart } = req.body;
+  try {
+    const newCartItem = new CartItem(cart);
+    const cartItem = await newCartItem.save();
+    res.json(cartItem);
+  } catch (error) {
+    res.status(500).send("Server Error");
+  }
+});
+
+
 
 // @ route  PUT api/books/:id
 // @desc    Update book

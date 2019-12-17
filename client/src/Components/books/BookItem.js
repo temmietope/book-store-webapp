@@ -5,11 +5,11 @@ import { withRouter } from "react-router-dom";
 
 const BookItem = ({ book, ...props }) => {
   const bookContext = useContext(BookContext);
-  const [home, setHome] = useState(false);
+  const [userBooksPage, setUserBooksPage] = useState(false);
 
   useEffect(() => {
     if (props.history.location.pathname !== "/") {
-      setHome(true);
+      setUserBooksPage(true);
     }
   }, [props.history.location.pathname]);
   const { deleteBook, setCurrent, clearCurrent } = bookContext;
@@ -32,6 +32,26 @@ const BookItem = ({ book, ...props }) => {
     deleteBook(_id);
     clearCurrent();
   };
+  const renderButtons = () => {
+    return (
+      <p className="buttons">
+        <button className="btn edit-btn" onClick={() => setCurrent(book)}>
+          <i className="far fa-edit" />
+        </button>
+        <button className="btn delete-btn" onClick={onDelete}>
+          <i className="far fa-trash-alt" />
+        </button>
+      </p>
+    );
+  };
+
+  const renderBuyNow = () => {
+    return (
+      <p className="buttons">
+        <button className="add-to-cart">Add to cart</button>
+      </p>
+    );
+  };
   return (
     <div className="book-card">
       <span className="img">
@@ -44,16 +64,7 @@ const BookItem = ({ book, ...props }) => {
         {author} <small className={genreColor(genre)}>{genre}</small>
       </span>
       <span className="description">{description}</span>
-      {home && (
-        <p className="buttons">
-          <button className="btn edit-btn" onClick={() => setCurrent(book)}>
-            <i className="far fa-edit" />
-          </button>
-          <button className="btn delete-btn" onClick={onDelete}>
-            <i className="far fa-trash-alt" />
-          </button>
-        </p>
-      )}
+      {userBooksPage ? renderButtons() : renderBuyNow()}
     </div>
   );
 };

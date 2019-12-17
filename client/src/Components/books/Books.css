@@ -71,24 +71,34 @@
   align-items: center;
 }
 .book-card .buttons {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    outline: none;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
 }
-.book-card .buttons .btn{
-    padding: 5px 10px;
-    border: none;
-    color: white;
-    font-family: DM Sans;
-    border-radius: 2px;
+.book-card .buttons .btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  font-family: DM Sans;
+  border-radius: 2px;
 }
-.book-card .buttons .edit-btn{
-    background: rgb(85, 79, 79);
-    outline: none;
+.book-card .buttons .edit-btn {
+  background: rgb(85, 79, 79);
+  outline: none;
 }
-.book-card .buttons .delete-btn{
-    background: rgba(212, 34, 34, 0.788);
-    outline: none;
+.book-card .buttons .delete-btn {
+  background: rgba(212, 34, 34, 0.788);
+  outline: none;
+}
+.book-card .buttons .add-to-cart {
+  width: 100%;
+  border: none;
+  height: 2.3rem;
+  background: rgb(243, 159, 173);
+  border-radius: 100px 100px 100px 100px;
+  color: white;
+  font-weight: bolder;
+  font-size: 0.8rem;
 }
