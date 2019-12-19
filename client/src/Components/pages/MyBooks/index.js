@@ -12,12 +12,12 @@ import BookForm from "../../../Context/book/BookForm";
 const MyBooks = props => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
-  const { books, filtered, getBooks, getUserCart, loading, cart } = bookContext;
+  const { books, filtered, getBooks, getUserCart, loading } = bookContext;
   const { isAuthenticated, user, loadUser } = authContext;
 
   useEffect(() => {
     loadUser();
-    if (isAuthenticated) {
+    if (isAuthenticated && user) {
       getBooks(user._id);
       getUserCart(user._id);
     }

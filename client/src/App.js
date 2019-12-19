@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/layouts/Navbar/index";
@@ -11,6 +11,8 @@ import PrivateRoute from "./Components/routing/PrivateRoute";
 
 import BookState from "./Context/book/BookState";
 import AuthState from "./Context/auth/AuthState";
+import BookContext from "./Context/book/bookContext";
+import AuthContext from "./Context/auth/authContext";
 import AlertState from "./Context/alert/AlertState";
 import setAuthToken from "./utils/setAuthToken";
 import MyBooks from "./Components/pages/MyBooks";
@@ -19,6 +21,21 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 const App = () => {
+  const authContext = useContext(AuthContext);
+  const bookContext = useContext(BookContext);
+  // const { user, isAuthenticated } = authContext;
+  // const { getUserCart } = bookContext;
+
+  
+
+  
+  useEffect(() => {
+    // if (isAuthenticated) {
+    //   console.log("user");
+    //   // getUserCart(user._id);
+    //   console.log(user);
+    // }
+  });
   return (
     <AuthState>
       <BookState>

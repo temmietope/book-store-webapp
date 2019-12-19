@@ -10,7 +10,7 @@ const Navbar = ({ title, icon }) => {
   const bookContext = useContext(BookContext);
 
   const { isAuthenticated, logout, user } = authContext;
-  const { clearBooks } = bookContext;
+  const { clearBooks, cart } = bookContext;
 
   const onLogout = () => {
     logout();
@@ -22,6 +22,11 @@ const Navbar = ({ title, icon }) => {
       <li>
         <NavLink to="/my_books" className="link" activeClassName="active">
           My Book
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/cart" className="link" activeClassName="active">
+          Cart {cart && cart.length}
         </NavLink>
       </li>
       <li to="/" className="link" onClick={onLogout}>

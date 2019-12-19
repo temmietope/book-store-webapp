@@ -48,6 +48,7 @@ router.get("/cart", auth, async (req, res) => {
   }
   try {
     const cartList = await CartItem.find({ ...params }).sort({ date: -1 });
+    console.log(cartList)
     res.json(cartList);
   } catch (err) {
     console.error(err.message);
