@@ -1,7 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect, useContext } from "react";
 import axios from "axios";
 import BookContext from "./bookContext";
 import bookReducer from "./bookReducer";
+import AuthContext from "../auth/authContext";
 import {
   GET_BOOKS,
   GET_CART,
@@ -21,6 +22,16 @@ import {
 } from "../types";
 
 const BookState = props => {
+  const authContext = useContext(AuthContext);
+  const { user, loadUser, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    loadUser();
+    if (isAuthenticated) {
+      getUserCart(user._id);
+    }
+  }, [isAuthenticated]);
+
   const initialState = {
     allBooks: null,
     books: null,

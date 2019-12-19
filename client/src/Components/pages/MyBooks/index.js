@@ -19,7 +19,7 @@ const MyBooks = props => {
     loadUser();
     if (isAuthenticated && user) {
       getBooks(user._id);
-      getUserCart(user._id);
+      // getUserCart(user._id);
     }
     //eslint-disable-next-line
   }, [isAuthenticated]);

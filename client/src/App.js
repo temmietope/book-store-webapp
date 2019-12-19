@@ -16,6 +16,7 @@ import AuthContext from "./Context/auth/authContext";
 import AlertState from "./Context/alert/AlertState";
 import setAuthToken from "./utils/setAuthToken";
 import MyBooks from "./Components/pages/MyBooks";
+import Cart from "./Components/pages/Cart";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -23,13 +24,11 @@ if (localStorage.token) {
 const App = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
-  // const { user, isAuthenticated } = authContext;
+  // const { user, isAuthenticated, loadUser } = authContext;
   // const { getUserCart } = bookContext;
 
-  
-
-  
   useEffect(() => {
+    // loadUser()
     // if (isAuthenticated) {
     //   console.log("user");
     //   // getUserCart(user._id);
@@ -50,6 +49,8 @@ const App = () => {
                   <Route exact path="/about" component={About} />
                   <Route exact path="/register" component={Register} />
                   <Route exact path="/login" component={Login} />
+                  <PrivateRoute exact path="/cart" component={Cart} />
+
                   <PrivateRoute exact path="/my_books" component={MyBooks} />
                 </Switch>
               </div>

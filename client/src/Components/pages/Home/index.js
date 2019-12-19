@@ -13,7 +13,7 @@ const Home = () => {
   const { getUserCart } = bookContext;
 
   useEffect(() => {
-    loadUser();
+    // loadUser();
     if (isAuthenticated && user) {
       console.log("user");
       getUserCart(user._id);
