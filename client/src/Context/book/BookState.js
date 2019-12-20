@@ -26,10 +26,13 @@ const BookState = props => {
   const { user, loadUser, isAuthenticated } = authContext;
 
   useEffect(() => {
-    loadUser();
-    if (isAuthenticated) {
-      getUserCart(user._id);
-    }
+    // loadUser();
+    isAuthenticated&& user&& getUserCart(user._id)
+    // if (isAuthenticated && user) {
+    //   getUserCart(user._id);
+    //   console.log(user)
+    // }
+    console.log(isAuthenticated)
   }, [isAuthenticated]);
 
   const initialState = {

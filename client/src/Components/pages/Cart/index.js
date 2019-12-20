@@ -7,19 +7,29 @@ import AuthContext from "../../../Context/auth/authContext";
 const Cart = () => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
-  const {  getUserCart, loading, cart } = bookContext;
+  const { getUserCart, loading, cart } = bookContext;
   const { isAuthenticated, user } = authContext;
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      getUserCart(user._id);
-      console.log(cart)
-    }
+    isAuthenticated && getUserCart(user._id) && console.log(cart);
+    // if (isAuthenticated && user) {
+    //   getUserCart(user._id);
+    //   console.log(cart)
+    // }
+
+    return () => {
+      console.log(cart);
+    };
     //eslint-disable-next-line
-  }, []);
-  return <div>
-      
-  </div>;
+  }, [isAuthenticated, user]);
+  return (
+    <div>
+      {cart &&
+        cart.map(cartItem => {
+          return <div key={cartItem._id}>{cartItem.title}</div>;
+        })}
+    </div>
+  );
 };
 
 export default Cart;

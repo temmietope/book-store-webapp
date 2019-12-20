@@ -10,8 +10,6 @@ import Alerts from "./Components/layouts/Alerts";
 import PrivateRoute from "./Components/routing/PrivateRoute";
 
 import BookState from "./Context/book/BookState";
-import AuthState from "./Context/auth/AuthState";
-import BookContext from "./Context/book/bookContext";
 import AuthContext from "./Context/auth/authContext";
 import AlertState from "./Context/alert/AlertState";
 import setAuthToken from "./utils/setAuthToken";
@@ -21,44 +19,36 @@ import Cart from "./Components/pages/Cart";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+
 const App = () => {
   const authContext = useContext(AuthContext);
-  const bookContext = useContext(BookContext);
-  // const { user, isAuthenticated, loadUser } = authContext;
-  // const { getUserCart } = bookContext;
-
+  const { loadUser, user } = authContext;
   useEffect(() => {
-    // loadUser()
-    // if (isAuthenticated) {
-    //   console.log("user");
-    //   // getUserCart(user._id);
-    //   console.log(user);
-    // }
-  });
+    loadUser();
+    console.log(user)
+  }, []);
   return (
-    <AuthState>
-      <BookState>
-        <AlertState>
-          <Router>
-            <div className="app">
-              <Navbar />
-              <div className="container">
-                <Alerts />
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/about" component={About} />
-                  <Route exact path="/register" component={Register} />
-                  <Route exact path="/login" component={Login} />
-                  <PrivateRoute exact path="/cart" component={Cart} />
+    <BookState>
+      <AlertState>
+        <Router>
+          <div className="app">
+            <Navbar />
+            <div className="container">
+              <Alerts />
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/cart" component={Cart} />
 
-                  <PrivateRoute exact path="/my_books" component={MyBooks} />
-                </Switch>
-              </div>
+                <PrivateRoute exact path="/my_books" component={MyBooks} />
+              </Switch>
             </div>
-          </Router>
-        </AlertState>
-      </BookState>
-    </AuthState>
+          </div>
+        </Router>
+      </AlertState>
+    </BookState>
   );
 };
 

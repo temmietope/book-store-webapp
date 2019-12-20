@@ -30,7 +30,7 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   //Load User
-  const loadUser = async () => {
+   const loadUser = async () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -46,6 +46,12 @@ const AuthState = props => {
       dispatch({ type: AUTH_ERROR });
     }
   };
+
+  // export const withUser = Component => props => (
+  //   <FirebaseContext.Consumer>
+  //     {firebase => <Component {...props} firebase={firebase} />}
+  //   </FirebaseContext.Consumer>
+  // );
 
   // const getUserFromToken = token => {
   //   const [header, payload] = token.split(".");
