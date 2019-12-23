@@ -27,12 +27,12 @@ const BookState = props => {
 
   useEffect(() => {
     // loadUser();
-    isAuthenticated&& user&& getUserCart(user._id)
+    isAuthenticated && user && getUserCart(user._id);
     // if (isAuthenticated && user) {
     //   getUserCart(user._id);
     //   console.log(user)
     // }
-    console.log(isAuthenticated)
+    console.log(isAuthenticated);
   }, [isAuthenticated]);
 
   const initialState = {
@@ -42,7 +42,8 @@ const BookState = props => {
     filtered: null,
     filteredAll: null,
     error: null,
-    cart: null
+    cart: null,
+    loading: true
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);

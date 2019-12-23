@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Link, withRouter } from "react-router-dom";
 import BookContext from "../../../Context/book/bookContext";
 import AuthContext from "../../../Context/auth/authContext";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const bookContext = useContext(BookContext);
@@ -11,23 +12,19 @@ const Cart = () => {
   const { isAuthenticated, user } = authContext;
 
   useEffect(() => {
-    isAuthenticated && getUserCart(user._id) && console.log(cart);
-    // if (isAuthenticated && user) {
-    //   getUserCart(user._id);
-    //   console.log(cart)
-    // }
+    console.log(cart);
+    user && getUserCart(user._id);
 
-    return () => {
-      console.log(cart);
-    };
     //eslint-disable-next-line
-  }, [isAuthenticated, user]);
+  }, []);
   return (
     <div>
-      {cart &&
+      <h2>Cart</h2>
+      <CartItem cart={cart} />
+      {/* {cart &&
         cart.map(cartItem => {
           return <div key={cartItem._id}>{cartItem.title}</div>;
-        })}
+        })} */}
     </div>
   );
 };

@@ -13,11 +13,11 @@ const Home = () => {
   const { getUserCart } = bookContext;
 
   useEffect(() => {
-    // loadUser();
-    if (isAuthenticated && user) {
-      console.log("user");
-      getUserCart(user._id);
-    }
+    loadUser();
+    // if (isAuthenticated && user) {
+    //   console.log(user);
+    //   getUserCart(user._id);
+    // }
     return(()=>{
       if(user){
         getUserCart(user._id)

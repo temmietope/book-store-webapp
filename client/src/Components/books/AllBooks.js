@@ -23,9 +23,12 @@ const AllBooks = () => {
       </div>
     );
   }
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div className="book-wrapper">
-      {allBooks !== null && !loading ? (
+      {allBooks !== null && !loading && (
         <TransitionGroup>
           {filteredAll !== null
             ? filteredAll.map(book => (
@@ -39,8 +42,6 @@ const AllBooks = () => {
                 </CSSTransition>
               ))}
         </TransitionGroup>
-      ) : (
-        <Spinner />
       )}
     </div>
   );
