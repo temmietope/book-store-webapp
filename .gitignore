@@ -1,6 +1,7 @@
 node_modules/
 config.env
 /client/build
+.env
 
 .DS_Store
 /client/.env.local
