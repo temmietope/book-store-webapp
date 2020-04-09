@@ -20,7 +20,6 @@ import Cart from "./Components/pages/Cart";
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-{console.log(process.env.MONGO)}
 const App = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
