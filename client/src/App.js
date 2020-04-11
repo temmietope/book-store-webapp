@@ -29,16 +29,6 @@ const App = () => {
   useEffect(() => {
     user && getUserCart(user._id)
     console.log(cart)
-    // async function loadUserAndSetCart() {
-    //   await loadUser();
-    //   if (isAuthenticated && user) {
-    //     console.log(user);
-    //     await getUserCart(user.id);
-    //     console.log(cart);
-    //   }
-    // };
-    // loadUserAndSetCart()
-    // console.log(user);
   }, []);
   return (
     <AlertState>
