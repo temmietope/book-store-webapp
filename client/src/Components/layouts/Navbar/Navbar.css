@@ -3,13 +3,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgb(243, 159, 173);
+  background: rgba(168, 29, 168, 0.377);
   z-index: 1;
   position: sticky;
   top: 0;
   padding: 0 5%;
   box-sizing: border-box;
   color: white;
+  min-height: 10vh;
+  height: 10vh;
   font-family: DM Sans;
 }
 .navbar i {
@@ -17,14 +19,14 @@
   margin-right: 5px;
 }
 .navbar ul {
-    list-style-type: none;
-    display: flex;
-
+  list-style-type: none;
+  display: flex;
 }
 .navbar li {
-    margin-left: 20px;
-    font-size: 20px;
+  margin-left: 20px;
+  font-size: 20px;
 }
 .active {
-  border-bottom: 2px solid white;
+  color: gray;
+  font-weight: bolder;
 }

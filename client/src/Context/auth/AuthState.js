@@ -11,18 +11,18 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_ERRORS
+  CLEAR_ERRORS,
 } from "../types";
 
-const AuthState = props => {
+const AuthState = (props) => {
   const initialState = {
     token: localStorage.getItem("token"),
     isAuthenticated: null,
     loading: true,
     user: null,
-    error: null
+    error: null,
   };
-  
+
   useEffect(() => {
     loadUser();
   }, []);
@@ -30,7 +30,7 @@ const AuthState = props => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   //Load User
-   const loadUser = async () => {
+  const loadUser = async () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
@@ -39,74 +39,58 @@ const AuthState = props => {
       const res = await axios.get("/api/auth");
       dispatch({
         type: USER_LOADED,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       console.log(err);
+      console.log("not registered");
       dispatch({ type: AUTH_ERROR });
     }
   };
 
-  // export const withUser = Component => props => (
-  //   <FirebaseContext.Consumer>
-  //     {firebase => <Component {...props} firebase={firebase} />}
-  //   </FirebaseContext.Consumer>
-  // );
-
-  // const getUserFromToken = token => {
-  //   const [header, payload] = token.split(".");
-  //   const user = JSON.parse(atob(payload));
-  //   console.log("user");
-  //   console.log(user.user.id);
-  //   dispatch({
-  //     type: USER_LOADED,
-  //     payload: user.user.id
-  //   });
-  // };
-
   //Register User
-  const register = async formData => {
+  const register = async (formData) => {
     const config = {
       headers: {
-        "Context-Type": "application/json"
-      }
+        "Context-Type": "application/json",
+      },
     };
     try {
       const res = await axios.post("/api/users", formData, config);
       let token = res.data.token;
       dispatch({
         type: REGISTER_SUCCESS,
-        payload: token
+        payload: token,
       });
       loadUser();
       // getUserFromToken(token);
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
-        payload: err.response.data.msg
+        payload: err.response.data.msg,
       });
     }
   };
 
   //Login User
-  const login = async formData => {
+  const login = async (formData) => {
     const config = {
       headers: {
-        "Context-Type": "application/json"
-      }
+        "Context-Type": "application/json",
+      },
     };
     try {
       const res = await axios.post("/api/auth", formData, config);
       let token = res.data.token;
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: token
+        payload: token,
       });
       loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
-        payload: err.response.data.msg
+        payload: err.response.data.msg,
       });
     }
   };
@@ -129,7 +113,7 @@ const AuthState = props => {
         loadUser,
         clearErrors,
         login,
-        logout
+        logout,
         // getUserFromToken
       }}
     >

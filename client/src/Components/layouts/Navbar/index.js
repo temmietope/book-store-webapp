@@ -12,13 +12,15 @@ const Navbar = ({ title, icon }) => {
   const { isAuthenticated, logout, user } = authContext;
   const { clearBooks, cart } = bookContext;
 
-  const onLogout = () => {
-    logout();
-    clearBooks();
-  };
+
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
+      <li>Hello</li>
+      <li>
+        <NavLink to="/" className="link" activeClassName="active">
+          Home
+        </NavLink>
+      </li>
       <li>
         <NavLink to="/my_books" className="link" activeClassName="active">
           My Book
@@ -26,10 +28,10 @@ const Navbar = ({ title, icon }) => {
       </li>
       <li>
         <NavLink to="/cart" className="link" activeClassName="active">
-          Cart {cart && cart.length}
+          Cart
         </NavLink>
       </li>
-      <li to="/" className="link" onClick={onLogout}>
+      <li to="/" className="link">
         <i className="fas fa-sign-out-alt" />
         <span>Logout</span>
       </li>
@@ -44,13 +46,8 @@ const Navbar = ({ title, icon }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/about" className="link" activeClassName="active">
-          About
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/register" className="link" activeClassName="active">
-          Register
+          Signup
         </NavLink>
       </li>
       <li>
@@ -64,22 +61,12 @@ const Navbar = ({ title, icon }) => {
     <div className="navbar">
       <h1>
         <Link to="/" className="link">
-          <i className={icon} /> {title}
+          BOOKIE
         </Link>
       </h1>
       <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+      {/* <ul>{guestLinks}</ul> */}
     </div>
   );
 };
-
-Navbar.propTypes = {
-  title: PropTypes.string.isRequired,
-  icon: PropTypes.string
-};
-
-Navbar.defaultProps = {
-  title: "Book Garden",
-  icon: "fas fa-rocket"
-};
-
 export default Navbar;

@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertContext from "../../Context/alert/alertContext";
 import AuthContext from "../../Context/auth/authContext";
+import Alerts from "../layouts/Alerts";
 
-const Register = props => {
+const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const { setAlert } = alertContext;
@@ -22,14 +23,14 @@ const Register = props => {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
   };
   const [user, setUser] = useState(INITIAL_STATE);
 
   const { name, email, password, password2 } = user;
 
-  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
-  const onSubmit = e => {
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
+  const onSubmit = (e) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
       setAlert("please enter all field", "danger");
@@ -39,7 +40,7 @@ const Register = props => {
       register({
         name,
         email,
-        password
+        password,
       });
     }
   };
@@ -90,6 +91,9 @@ const Register = props => {
             required
             onChange={onChange}
           />
+        </div>
+        <div className="form-alert">
+          <Alerts />
         </div>
         <button type="submit" value="register" className="register-btn">
           Register

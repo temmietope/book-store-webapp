@@ -8,35 +8,33 @@ import Register from "./Components/auth/Register";
 import Login from "./Components/auth/Login";
 import Alerts from "./Components/layouts/Alerts";
 import PrivateRoute from "./Components/routing/PrivateRoute";
-
-// import BookState from "./Context/book/BookState";
-import BookContext from "./Context/book/bookContext";
-import AuthContext from "./Context/auth/authContext";
-import AlertState from "./Context/alert/AlertState";
-import setAuthToken from "./utils/setAuthToken";
 import MyBooks from "./Components/pages/MyBooks";
 import Cart from "./Components/pages/Cart";
+import setAuthToken from "./utils/setAuthToken";
+import Spinner from "./Components/layouts/Spinner";
+import AuthContext from "./Context/auth/authContext";
+import BookContext from "./Context/book/bookContext";
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
 const App = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
-  const { loadUser, user, isAuthenticated } = authContext;
+  const { loadUser, user, isAuthenticated, loading } = authContext;
   const { getUserCart, cart } = bookContext;
-
   useEffect(() => {
-    user && getUserCart(user._id)
-    console.log(cart)
+    async function fetchUser() {
+      await loadUser();
+    }
+    fetchUser();
+    console.log(isAuthenticated);
   }, []);
   return (
-    <AlertState>
-      <Router>
+    <Router>
+      {loading ? (
+        <Spinner />
+      ) : (
         <div className="app">
           <Navbar />
           <div className="container">
-            <Alerts />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
@@ -48,8 +46,8 @@ const App = () => {
             </Switch>
           </div>
         </div>
-      </Router>
-    </AlertState>
+      )}
+    </Router>
   );
 };
 

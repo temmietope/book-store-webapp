@@ -2,15 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import AuthContext from "../../Context/auth/authContext";
 import BookContext from "../../Context/book/bookContext";
 import AlertContext from "../../Context/alert/alertContext";
+import Alerts from "../layouts/Alerts";
 
-const Login = props => {
+const Login = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
   const { setAlert } = alertContext;
   const { login, error, clearErrors, isAuthenticated, user } = authContext;
-  const {getUserCart}= bookContext
+  const { getUserCart } = bookContext;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -24,23 +25,25 @@ const Login = props => {
   }, [error, isAuthenticated, props.history]);
   const [userlog, setUser] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
   const { email, password } = userlog;
 
-  const onChange = e => setUser({ ...userlog, [e.target.name]: e.target.value });
-  const onSubmit = async e => {
+  const onChange = (e) =>
+    setUser({ ...userlog, [e.target.name]: e.target.value });
+  const onSubmit = async (e) => {
     e.preventDefault();
+    console.log("clicked")
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "danger");
     } else {
       await login({
         email,
-        password
+        password,
       });
-      await user && getUserCart(user._id)
-      console.log("gotten cart from db")
+      (await user) && getUserCart(user._id);
+      console.log("gotten cart from db");
     }
   };
   return (
@@ -70,7 +73,9 @@ const Login = props => {
             required
           />
         </div>
-
+        <div className="form-alert">
+        <Alerts />
+        </div>
         <button type="submit" value="register" className="register-btn">
           Login
         </button>

@@ -35,6 +35,7 @@
 }
 .register form {
   width: 40vw;
+  height: 70vh;
 }
 .register .form-group {
   display: flex;
@@ -72,15 +73,18 @@
   background: rgb(243, 159, 173);
   outline: none;
 }
-.alert {
+.register .form-alert {
   width: 100%;
-  height: 50px;
+}
+.alert {
+  width: inherit;
+  height: inherit;
   box-sizing: border-box;
   font-weight: bolder;
   font-size: 20px;
   color: white;
   z-index: 1;
-  position: fixed;
+  /* position: fixed; */
 }
 .alert i {
   margin-right: 10px;
