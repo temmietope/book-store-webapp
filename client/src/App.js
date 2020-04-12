@@ -19,13 +19,15 @@ const App = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
   const { loadUser, user, isAuthenticated, loading } = authContext;
-  const { getUserCart, cart } = bookContext;
+  const { getUserCart, cart, getAllBooks } = bookContext;
   useEffect(() => {
     async function fetchUser() {
+      getAllBooks();
       await loadUser();
     }
     fetchUser();
     console.log(isAuthenticated);
+    console.log(user);
   }, []);
   return (
     <Router>
@@ -40,8 +42,7 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/cart" component={Cart} />
-
+              <PrivateRoute exact path="/cart" component={Cart} />
               <PrivateRoute exact path="/my_books" component={MyBooks} />
             </Switch>
           </div>

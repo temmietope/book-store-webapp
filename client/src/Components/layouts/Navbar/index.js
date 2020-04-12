@@ -1,11 +1,11 @@
 import React, { Fragment, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, withRouter } from "react-router-dom";
 import AuthContext from "../../../Context/auth/authContext";
 import BookContext from "../../../Context/book/bookContext";
 import "./Navbar.css";
 
-const Navbar = ({ title, icon }) => {
+const Navbar = ({ history }) => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
@@ -36,6 +36,7 @@ const Navbar = ({ title, icon }) => {
         onClick={() => {
           logout();
           clearBooks();
+          history.push("/login");
         }}
       >
         <i className="fas fa-sign-out-alt" />
@@ -75,4 +76,4 @@ const Navbar = ({ title, icon }) => {
     </div>
   );
 };
-export default Navbar;
+export default withRouter(Navbar);

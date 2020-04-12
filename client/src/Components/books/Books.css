@@ -1,0 +1,104 @@
+.book-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+.book-card {
+  width: 40%;
+  margin: 2%;
+  height: 50vh;
+  border: 1px solid rgb(187, 185, 185);
+  display: inline-grid;
+  grid-template-rows: 40% 15% 10% 20% 15%;
+  justify-items: center;
+  padding-bottom: 2%;
+  box-sizing: border-box;
+  grid-gap: 2px;
+  border-radius: 3px;
+}
+.book-card .img {
+  width: 100%;
+}
+.book-card .img img {
+  width: 100%;
+  height: 100%;
+}
+.book-card h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  float: left;
+}
+.book-card .type {
+  color: white;
+  padding: 2px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  text-transform: capitalize;
+  float: right;
+  width: 20%;
+}
+.book-card .type-green {
+  background: rgba(52, 201, 52, 0.788);
+}
+.book-card .type-red {
+  background: rgba(151, 42, 97, 0.753);
+}
+.book-card .type-yellow {
+  background: rgba(145, 131, 4, 0.836);
+}
+.book-card .type-blue {
+  background: rgba(89, 89, 238, 0.788);
+}
+.book-card .description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  width: 80%;
+  font-size: 13px;
+}
+.book-card .author {
+  font-size: 15px;
+  text-transform: capitalize;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.book-card .buttons {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+}
+.book-card .buttons .btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  font-family: DM Sans;
+  border-radius: 2px;
+}
+.book-card .buttons .edit-btn {
+  background: rgb(85, 79, 79);
+  outline: none;
+}
+.book-card .buttons .delete-btn {
+  background: rgba(212, 34, 34, 0.788);
+  outline: none;
+}
+.book-card .buttons .add-to-cart {
+  width: 100%;
+  border: none;
+  height: 2.3rem;
+  background: rgb(243, 159, 173);
+  border-radius: 100px 100px 100px 100px;
+  color: white;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}

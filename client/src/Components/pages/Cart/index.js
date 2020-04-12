@@ -11,20 +11,14 @@ const Cart = () => {
   const { getUserCart, loading, cart } = bookContext;
   const { isAuthenticated, user } = authContext;
 
-  useEffect(() => {
-    console.log(cart);
-    user && getUserCart(user._id);
-
-    //eslint-disable-next-line
-  }, []);
   return (
     <div>
       <h2>Cart</h2>
       <CartItem cart={cart} />
-      {/* {cart &&
-        cart.map(cartItem => {
+      {cart &&
+        cart.map((cartItem) => {
           return <div key={cartItem._id}>{cartItem.title}</div>;
-        })} */}
+        })}
     </div>
   );
 };
