@@ -12,7 +12,6 @@ const Navbar = ({ title, icon }) => {
   const { isAuthenticated, logout, user } = authContext;
   const { clearBooks, cart } = bookContext;
 
-
   const authLinks = (
     <Fragment>
       <li>Hello</li>
@@ -31,7 +30,14 @@ const Navbar = ({ title, icon }) => {
           Cart
         </NavLink>
       </li>
-      <li to="/" className="link">
+      <li
+        to="/"
+        className="link"
+        onClick={() => {
+          logout();
+          clearBooks();
+        }}
+      >
         <i className="fas fa-sign-out-alt" />
         <span>Logout</span>
       </li>
