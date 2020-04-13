@@ -61,7 +61,8 @@ export default (state, action) => {
         books: null,
         filtered: null,
         error: null,
-        current: null
+        current: null,
+        loading: false
       };
     case UPDATE_BOOK:
       return {

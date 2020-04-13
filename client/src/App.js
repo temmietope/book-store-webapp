@@ -22,13 +22,12 @@ const App = () => {
   const { getUserCart, cart, getAllBooks } = bookContext;
   useEffect(() => {
     async function fetchUser() {
+      
       getAllBooks();
       await loadUser();
     }
     fetchUser();
-    console.log(isAuthenticated);
-    console.log(user);
-  }, []);
+  }, [loading]);
   return (
     <Router>
       {loading ? (

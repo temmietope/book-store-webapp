@@ -13,14 +13,12 @@ import Spinner from "../../layouts/Spinner";
 const MyBooks = () => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
-  const { books, filtered, getBooks, getUserCart, loading } = bookContext;
+  const { books, filtered, getBooks, loading } = bookContext;
   const { isAuthenticated, user, loadUser } = authContext;
 
   useEffect(() => {
-    loadUser();
     if (isAuthenticated && user) {
       getBooks(user._id);
-      // getUserCart(user._id);
     }
     //eslint-disable-next-line
   }, [isAuthenticated]);

@@ -1,24 +1,33 @@
 import React, { useContext, useEffect } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Link, withRouter } from "react-router-dom";
 import BookContext from "../../../Context/book/bookContext";
 import AuthContext from "../../../Context/auth/authContext";
 import CartItem from "./CartItem";
+import Spinner from "../../layouts/Spinner";
 
 const Cart = () => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
   const { getUserCart, loading, cart } = bookContext;
   const { isAuthenticated, user } = authContext;
-
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      getUserCart(user._id);
+    }
+    //eslint-disable-next-line
+  }, [user]);
   return (
     <div>
       <h2>Cart</h2>
-      <CartItem cart={cart} />
-      {cart &&
-        cart.map((cartItem) => {
-          return <div key={cartItem._id}>{cartItem.title}</div>;
-        })}
+      {loading && cart === null ? (
+        <Spinner />
+      ) : (
+        <div>
+          {cart &&
+            cart.map((cartItem, index) => {
+              return <CartItem key={index} cartItem={cartItem} />;
+            })}
+        </div>
+      )}
     </div>
   );
 };

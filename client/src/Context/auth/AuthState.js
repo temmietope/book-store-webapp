@@ -23,10 +23,6 @@ const AuthState = (props) => {
     error: null,
   };
 
-  useEffect(() => {
-    loadUser();
-  }, []);
-
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   //Load User
