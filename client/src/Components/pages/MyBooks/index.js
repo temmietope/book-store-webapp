@@ -1,20 +1,18 @@
 import React, { useContext, useEffect } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { Link, withRouter } from "react-router-dom";
+import { TransitionGroup } from "react-transition-group";
+import { withRouter } from "react-router-dom";
 import BookContext from "../../../Context/book/bookContext";
 import AuthContext from "../../../Context/auth/authContext";
-
-// import Spinner from "../../layouts/Spinner";
-import "./MyBooks.css";
 import BookForm from "../../../Context/book/BookForm";
 import MyBooksList from "./MyBooksList";
 import Spinner from "../../layouts/Spinner";
+import "./MyBooks.css";
 
 const MyBooks = () => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
   const { books, filtered, getBooks, loading } = bookContext;
-  const { isAuthenticated, user, loadUser } = authContext;
+  const { isAuthenticated, user } = authContext;
 
   useEffect(() => {
     if (isAuthenticated && user) {
