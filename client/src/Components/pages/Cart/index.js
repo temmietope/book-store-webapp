@@ -14,7 +14,7 @@ const Cart = () => {
       getUserCart(user._id);
     }
     //eslint-disable-next-line
-  }, [user]);
+  }, [isAuthenticated]);
   return (
     <div>
       <h2>Cart</h2>

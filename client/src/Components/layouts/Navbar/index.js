@@ -1,5 +1,4 @@
-import React, { Fragment, useContext, useEffect } from "react";
-import PropTypes from "prop-types";
+import React, { Fragment, useContext } from "react";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import AuthContext from "../../../Context/auth/authContext";
 import BookContext from "../../../Context/book/bookContext";
@@ -9,8 +8,8 @@ const Navbar = ({ history }) => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
-  const { isAuthenticated, logout, user } = authContext;
-  const { clearBooks, cart } = bookContext;
+  const { isAuthenticated, logout} = authContext;
+  const { clearBooks} = bookContext;
 
   const authLinks = (
     <Fragment>

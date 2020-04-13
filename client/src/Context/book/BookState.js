@@ -17,11 +17,10 @@ import {
   FILTER_ALL_BOOKS,
   CLEAR_FILTER,
   ADD_TO_CART,
-  DELETE_FROM_CART
+  DELETE_FROM_CART,
 } from "../types";
 
-const BookState = props => {
-
+const BookState = (props) => {
   const initialState = {
     allBooks: null,
     books: null,
@@ -30,38 +29,38 @@ const BookState = props => {
     filteredAll: null,
     error: null,
     cart: null,
-    loading: true
+    loading: true,
   };
 
   const [state, dispatch] = useReducer(bookReducer, initialState);
   //Get Books
-  const getBooks = async user_id => {
+  const getBooks = async (user_id) => {
     try {
       const res = await axios.get(`api/books/user?id=${user_id}`);
       dispatch({
         type: GET_BOOKS,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
 
   //Get User cart
-  const getUserCart = async user_id => {
+  const getUserCart = async (user_id) => {
     try {
       const res = await axios.get(`api/books/cart?id=${user_id}`);
       dispatch({
         type: GET_CART,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -72,72 +71,72 @@ const BookState = props => {
       const res = await axios.get("api/books/");
       dispatch({
         type: GET_ALL_BOOKS,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
 
   //Add Book
-  const addBook = async book => {
+  const addBook = async (book) => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
     try {
       const res = await axios.post("api/books", book, config);
       dispatch({
         type: ADD_BOOK,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
 
   //Add Book To Cart
-  const addToCart = async book => {
+  const addToCart = async (book) => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
     try {
       const res = await axios.post("api/books/cart", book, config);
       dispatch({
         type: ADD_TO_CART,
-        payload: res.data
+        payload: res.data,
       });
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
 
   //Delete Book
-  const deleteBook = async id => {
+  const deleteBook = async (id) => {
     await axios.delete(`api/books/${id}`);
     dispatch({
       type: DELETE_BOOK,
-      payload: id
+      payload: id,
     });
   };
   //Update Book
-  const updateBook = async book => {
+  const updateBook = async (book) => {
     const config = {
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     };
     try {
       const res = await axios.put(`api/books/${book._id}`, book, config);
@@ -145,7 +144,7 @@ const BookState = props => {
     } catch (err) {
       dispatch({
         type: BOOK_ERROR,
-        payload: err.response.msg
+        payload: err.response.msg,
       });
     }
   };
@@ -154,7 +153,7 @@ const BookState = props => {
     dispatch({ type: CLEAR_BOOKS });
   };
   //SetCurrent Book
-  const setCurrent = book => {
+  const setCurrent = (book) => {
     dispatch({ type: SET_CURRENT, payload: book });
   };
   //Clear Current Book
@@ -163,12 +162,12 @@ const BookState = props => {
   };
 
   //Filter Books
-  const filterBooks = text => {
+  const filterBooks = (text) => {
     dispatch({ type: FILTER_BOOKS, payload: text });
   };
 
   ////Filter All Books
-  const filterAllBooks = text => {
+  const filterAllBooks = (text) => {
     dispatch({ type: FILTER_ALL_BOOKS, payload: text });
   };
 
@@ -199,7 +198,7 @@ const BookState = props => {
         filterBooks,
         filterAllBooks,
         clearFilter,
-        clearBooks
+        clearBooks,
       }}
     >
       {props.children}

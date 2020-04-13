@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../Context/auth/authContext";
-import BookContext from "../../Context/book/bookContext";
 import AlertContext from "../../Context/alert/alertContext";
 import Alerts from "../layouts/Alerts";
 
 const Login = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
-  const bookContext = useContext(BookContext);
 
   const { setAlert } = alertContext;
-  const { login, error, clearErrors, isAuthenticated, user } = authContext;
-  const { getUserCart } = bookContext;
+  const { login, error, clearErrors, isAuthenticated } = authContext;
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -34,7 +32,6 @@ const Login = (props) => {
     setUser({ ...userlog, [e.target.name]: e.target.value });
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log("clicked")
     if (email === "" || password === "") {
       setAlert("Please fill in all fields", "danger");
     } else {
@@ -42,8 +39,6 @@ const Login = (props) => {
         email,
         password,
       });
-      (await user) && getUserCart(user._id);
-      console.log("gotten cart from db");
     }
   };
   return (
@@ -74,11 +69,19 @@ const Login = (props) => {
           />
         </div>
         <div className="form-alert">
-        <Alerts />
+          <Alerts />
         </div>
         <button type="submit" value="register" className="register-btn">
           Login
         </button>
+        <p className="switch-register-and-login">
+          <small>
+            Don't have an account? <Link to="/register">Register</Link>
+          </small>
+          <small>
+            Forgot Password
+          </small>
+        </p>
       </form>
     </div>
   );

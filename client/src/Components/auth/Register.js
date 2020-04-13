@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import AlertContext from "../../Context/alert/alertContext";
 import AuthContext from "../../Context/auth/authContext";
 import Alerts from "../layouts/Alerts";
@@ -98,6 +99,11 @@ const Register = (props) => {
         <button type="submit" value="register" className="register-btn">
           Register
         </button>
+        <p>
+          <small>
+            Already have an account? <Link to="/login">Login</Link>
+          </small>
+        </p>
       </form>
     </div>
   );
