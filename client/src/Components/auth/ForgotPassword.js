@@ -3,32 +3,36 @@ import AuthContext from "../../Context/auth/authContext";
 import AlertContext from "../../Context/alert/alertContext";
 import Alerts from "../layouts/Alerts";
 
-const ForgotPassword = (props) => {
+const ForgotPassword = () => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
   const { setAlert } = alertContext;
-  const { forgotPassword, error, clearErrors, isAuthenticated } = authContext;
+  const { forgotPassword, error, clearErrors } = authContext;
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   props.history.push("/");
-    // }
-    if (error === "Invalid Credentials") {
+    if (error) {
       setAlert(error, "danger");
       clearErrors();
     }
     // eslint-disable-next-line
   }, [error]);
-  const [email, setEmail] = useState("");
+  const [userlog, setEmail] = useState({ email: "" });
 
-  const onChange = (e) => setEmail(e.target.value);
+  const { email } = userlog;
+  const onChange = (e) =>
+    setEmail({ ...userlog, [e.target.name]: e.target.value });
   const onSubmit = async (e) => {
     e.preventDefault();
     if (email === "") {
       setAlert("Please enter your email", "danger");
     } else {
-      await forgotPassword(email);
+      try {
+        forgotPassword({ email });
+      } catch (err) {
+        console.log(err)
+        setAlert(error, "danger");
+      }
     }
   };
   return (

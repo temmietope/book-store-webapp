@@ -12,7 +12,7 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
-  FORGOT_PASSWORD
+  FORGOT_PASSWORD,
 } from "../types";
 
 const AuthState = (props) => {
@@ -100,16 +100,35 @@ const AuthState = (props) => {
       },
     };
     try {
-      const res = await axios.post("/api/users/forgot_password", formData, config);
-      let token = res.data.token;
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: token,
-      });
-      loadUser();
+      const res = await axios.post(
+        "/api/auth/forgot_password",
+        formData,
+        config
+      );
     } catch (err) {
       dispatch({
-        type: LOGIN_FAIL,
+        type: AUTH_ERROR,
+        payload: err.response.data.msg,
+      });
+    }
+  };
+
+  //Reset Password
+  const resetPassword = async (formData) => {
+    const config = {
+      headers: {
+        "Context-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post(
+        "/api/auth/reset_password",
+        formData,
+        config
+      );
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
         payload: err.response.data.msg,
       });
     }
@@ -134,7 +153,8 @@ const AuthState = (props) => {
         clearErrors,
         login,
         logout,
-        forgotPassword
+        forgotPassword,
+        resetPassword,
       }}
     >
       {props.children}
