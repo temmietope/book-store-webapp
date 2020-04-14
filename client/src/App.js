@@ -12,6 +12,7 @@ import Cart from "./Components/pages/Cart";
 import Spinner from "./Components/layouts/Spinner";
 import AuthContext from "./Context/auth/authContext";
 import BookContext from "./Context/book/bookContext";
+import ForgotPassword from "./Components/auth/ForgotPassword";
 
 const App = () => {
   const authContext = useContext(AuthContext);
@@ -38,6 +39,8 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/forgot_password" component={ForgotPassword} />
+
               <PrivateRoute exact path="/cart" component={Cart} />
               <PrivateRoute exact path="/my_books" component={MyBooks} />
             </Switch>

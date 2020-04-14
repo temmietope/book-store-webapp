@@ -52,11 +52,6 @@ const Navbar = ({ history }) => {
         </NavLink>
       </li>
       <li>
-        <NavLink to="/register" className="link" activeClassName="active">
-          Signup
-        </NavLink>
-      </li>
-      <li>
         <NavLink to="/login" className="link" activeClassName="active">
           Login
         </NavLink>

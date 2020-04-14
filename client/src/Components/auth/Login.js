@@ -79,7 +79,7 @@ const Login = (props) => {
             Don't have an account? <Link to="/register">Register</Link>
           </small>
           <small>
-            Forgot Password
+            <Link to="/forgot_password">Forgot Password</Link>
           </small>
         </p>
       </form>
