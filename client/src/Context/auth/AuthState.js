@@ -127,6 +127,7 @@ const AuthState = (props) => {
         formData,
         config
       );
+      console.log(res)
     } catch (err) {
       dispatch({
         type: AUTH_ERROR,

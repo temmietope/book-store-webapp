@@ -159,55 +159,14 @@ router.post(
     const { JWT_SECRET } = process.env;
     console.log(req.query);
     try {
-      // const { email } = jwt.verify(req.query.token, JWT_SECRET)
+      const { email } = jwt.verify(req.query.token, JWT_SECRET);
       console.log(email);
-      // let user = await User.findOne({ email });
-      // if (!user) {
-      //   return res
-      //     .status(400)
-      //     .json({ msg: "This email address does not have an account with us" });
-      // }
-      // const payload = {
-      //   email: user.email,
-      // };
-      // jwt.sign(
-      //   payload,
-      //   JWT_SECRET,
-      //   {
-      //     expiresIn: 360000,
-      //   },
-      //   (err, token) => {
-      //     if (err) throw err;
-      //     try {
-      //       const emailText = `Hi ${user.name}....... click https://${
-      //         req.headers.x - forwarded - host
-      //       }/reset_password?token=${token} to reset password. This token will expire in 3 minutes`;
-      //       const mailOptions = {
-      //         text: emailText,
-      //         to: payload.email,
-      //         from: "we.bookpeople@gmail.com",
-      //         subject: "Change your Password",
-      //       };
-      //       const { EMAIL_PASS } = process.env;
-      //       const transporter = nodemailer.createTransport({
-      //         service: "gmail",
-      //         auth: {
-      //           user: "temmieayodele@gmail.com",
-      //           pass: EMAIL_PASS,
-      //         },
-      //       });
-      //       transporter.sendMail(mailOptions, function (error, info) {
-      //         if (error) {
-      //           console.log(error);
-      //         } else {
-      //           console.log("Email sent: " + info.response);
-      //         }
-      //       });
-      //     } catch (err) {
-      //       console.log(err);
-      //     }
-      //   }
-      // );
+      const salt = await bcrypt.genSalt(10);
+      const encrypted_password = await bcrypt.hash(password, salt);
+      console.log(encrypted_password)
+      const done = await User.update({ email }, { password: encrypted_password });
+      console.log(done)
+      res.send("password updated");
     } catch (err) {
       console.log("error" + err.message);
       res.status(500).send("Server Error");
