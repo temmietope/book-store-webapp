@@ -121,8 +121,9 @@ const AuthState = (props) => {
       },
     };
     try {
+      const token = window.location.search.replace('?token=', '')
       const res = await axios.post(
-        "/api/auth/reset_password",
+        `/api/auth/reset_password?token=${token}`,
         formData,
         config
       );

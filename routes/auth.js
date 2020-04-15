@@ -157,7 +157,7 @@ router.post(
     }
     const { password } = req.body;
     const { JWT_SECRET } = process.env;
-    console.log(req);
+    console.log(req.query);
     try {
       // const { email } = jwt.verify(req.query.token, JWT_SECRET)
       console.log(email);
