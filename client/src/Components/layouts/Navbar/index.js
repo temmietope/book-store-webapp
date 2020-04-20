@@ -8,12 +8,12 @@ const Navbar = ({ history }) => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
 
-  const { isAuthenticated, logout} = authContext;
+  const { isAuthenticated, logout, user} = authContext;
   const { clearBooks} = bookContext;
 
   const authLinks = (
     <Fragment>
-      <li>Hello</li>
+      <li>Hello <span className="nav-user-name">{user.name}</span></li>
       <li>
         <NavLink to="/" className="link" activeClassName="active">
           Home
@@ -21,7 +21,7 @@ const Navbar = ({ history }) => {
       </li>
       <li>
         <NavLink to="/my_books" className="link" activeClassName="active">
-          My Book
+          My Books
         </NavLink>
       </li>
       <li>

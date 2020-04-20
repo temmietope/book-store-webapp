@@ -30,3 +30,7 @@
   color: gray;
   font-weight: bolder;
 }
+.nav-user-name {
+  text-transform: capitalize;
+  font-weight: bolder;
+}
