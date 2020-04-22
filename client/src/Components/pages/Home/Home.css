@@ -27,8 +27,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-
 }
 .home-wrapper .filter-region i {
   position: absolute;
@@ -40,14 +38,13 @@
   align-items: center;
   background-color: rgba(202, 22, 238, 0.288);
   color: rgb(59, 56, 56);
+  border-radius: 0 5px 5px 0;
 }
 .home-wrapper .filter-form {
   width: 50vw;
   min-width: 50vw;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 5px;
-
 }
 .home-wrapper .filter-form input {
   padding: 10px;
@@ -57,6 +54,7 @@
   font-family: DM Sans;
   font-size: 15px;
   outline: none;
+  border-radius: 5px;
 }
 .home-wrapper .filter-form ::placeholder {
   font-family: DM Sans;
@@ -73,4 +71,10 @@
   justify-content: center;
   align-items: flex-start;
   flex-flow: column;
+  width: 100%;
+}
+.books-region {
+  border: 1px solid black;
+  width: 100%;
+  min-width: 100%;
 }

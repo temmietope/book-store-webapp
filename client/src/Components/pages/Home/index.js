@@ -13,7 +13,9 @@ const Home = () => {
             <BookFilter />
             <i className="fas fa-search"></i>
           </span>
+          <span className="books-region">
           <AllBooks />
+          </span>
         </div>
       </div>
     </div>

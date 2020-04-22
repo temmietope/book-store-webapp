@@ -11,6 +11,7 @@
   font-family: DM Sans;
   margin: auto;
   background: rgba(194, 192, 192, 0.178);
+  min-height: 100vh;
 }
 .bg-dark {
   background: rgb(102, 95, 95);
