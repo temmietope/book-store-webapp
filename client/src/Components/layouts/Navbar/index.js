@@ -13,7 +13,7 @@ const Navbar = ({ history }) => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello <span className="nav-user-name">{user.name}</span></li>
+      <li>Hello <span className="nav-user-name">{user && user.name}</span></li>
       <li>
         <NavLink to="/" className="link" activeClassName="active">
           Home

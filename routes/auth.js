@@ -12,8 +12,6 @@ const User = require("../models/User");
 // @desc    Get logged in user
 // @access  Private
 router.get("/", auth, async (req, res) => {
-  console.log("load user");
-  console.log(req);
   try {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
@@ -83,7 +81,6 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const { email } = req.body;
-    console.log(email);
     try {
       let user = await User.findOne({ email });
       if (!user) {
@@ -92,7 +89,6 @@ router.post(
           .json({ msg: "This email address does not have an account with us" });
       }
       const { JWT_SECRET } = process.env;
-      console.log(user);
       const payload = {
         email: user.email,
       };
@@ -105,11 +101,7 @@ router.post(
         (err, token) => {
           if (err) throw err;
           try {
-            console.log(token);
-            console.log(payload.email);
-            console.log(req.headers);
             const emailText = `Hi ${user.name}....... click http://localhost:3000/reset_password?token=${token} to reset password. This token will expire in 3 minutes`;
-            console.log(emailText);
             const mailOptions = {
               text: emailText,
               to: payload.email,
@@ -157,15 +149,11 @@ router.post(
     }
     const { password } = req.body;
     const { JWT_SECRET } = process.env;
-    console.log(req.query);
     try {
       const { email } = jwt.verify(req.query.token, JWT_SECRET);
-      console.log(email);
       const salt = await bcrypt.genSalt(10);
       const encrypted_password = await bcrypt.hash(password, salt);
-      console.log(encrypted_password)
       const done = await User.update({ email }, { password: encrypted_password });
-      console.log(done)
       res.send("password updated");
     } catch (err) {
       console.log("error" + err.message);
