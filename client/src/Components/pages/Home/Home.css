@@ -7,6 +7,8 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  padding: 5%;
+  box-sizing: border-box;
 }
 .home h1 {
   margin-bottom: 3%;
@@ -14,18 +16,38 @@
   color: rgba(65, 60, 60, 0.877);
 }
 .home-wrapper {
-  border-top: none;
-  border-bottom: none;
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-flow: column;
+  border: 1px solid black;
+}
+.home-wrapper .filter-region {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+
+}
+.home-wrapper .filter-region i {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column;
+  background-color: rgba(202, 22, 238, 0.288);
+  color: rgb(59, 56, 56);
 }
 .home-wrapper .filter-form {
-  width: 70%;
+  width: 50vw;
+  min-width: 50vw;
   padding: 0;
   box-sizing: border-box;
+  border-radius: 5px;
+
 }
 .home-wrapper .filter-form input {
   padding: 10px;
@@ -42,13 +64,13 @@
   color: rgba(128, 128, 128, 0.767);
 }
 .home-wrapper .filter-form input:focus {
-  color: red;
+  color: rgb(202, 22, 238);
   outline: none;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid rgb(202, 22, 238);
 }
 .book-list {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-flow: column;
 }

@@ -7,10 +7,12 @@ const Home = () => {
   return (
     <div className="home">
       <h1>Books</h1>
-
       <div className="home-wrapper">
         <div className="book-list">
-          <BookFilter />
+          <span className="filter-region">
+            <BookFilter />
+            <i className="fas fa-search"></i>
+          </span>
           <AllBooks />
         </div>
       </div>
