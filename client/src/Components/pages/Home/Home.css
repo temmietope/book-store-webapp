@@ -21,12 +21,12 @@
   justify-content: center;
   align-items: flex-start;
   flex-flow: column;
-  border: 1px solid black;
 }
 .home-wrapper .filter-region {
   position: relative;
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 }
 .home-wrapper .filter-region i {
   position: absolute;
@@ -74,7 +74,6 @@
   width: 100%;
 }
 .books-region {
-  border: 1px solid black;
   width: 100%;
   min-width: 100%;
 }

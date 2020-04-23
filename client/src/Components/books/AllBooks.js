@@ -14,18 +14,7 @@ const AllBooks = () => {
     getAllBooks();
     //eslint-disable-next-line
   }, []);
-  if (allBooks !== null && allBooks.length === 0 && !loading) {
-    return (
-      <div>
-        No book for sale right now. You can <Link to="/login">Login</Link> so,
-        you can post your books for sale. We will be glad to display them to
-        potential buyers.
-      </div>
-    );
-  }
-  if (loading) {
-    return <Spinner />;
-  }
+
   const renderNoBooks = () => {
     return (
       <div>
@@ -42,7 +31,7 @@ const AllBooks = () => {
       ) : allBooks !== null && allBooks.length === 0 ? (
         renderNoBooks()
       ) : (
-        <TransitionGroup>
+        <TransitionGroup className="trans">
           {filteredAll !== null
             ? filteredAll.map((book) => (
                 <CSSTransition key={book._id} timeout={500} classNames="item">
@@ -56,22 +45,6 @@ const AllBooks = () => {
               ))}
         </TransitionGroup>
       )}
-
-      {/* {allBooks !== null && !loading && (
-        <TransitionGroup>
-          {filteredAll !== null
-            ? filteredAll.map(book => (
-                <CSSTransition key={book._id} timeout={500} classNames="item">
-                  <BookItem book={book} />
-                </CSSTransition>
-              ))
-            : allBooks.map(book => (
-                <CSSTransition key={book._id} timeout={500} classNames="item">
-                  <BookItem book={book} />
-                </CSSTransition>
-              ))}
-        </TransitionGroup>
-      )} */}
     </div>
   );
 };

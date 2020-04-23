@@ -70,16 +70,13 @@ const BookItem = ({ book, ...props }) => {
   };
   return (
     <div className="book-card">
-      <span className="img">
-        <img src="./images/reading.jpg" alt={book.title} />
-      </span>
-      <h3>{title}</h3>
-      <span className="author">
-        {" "}
-        By: {"  "}
-        {author} <small className={genreColor(genre)}>{genre}</small>
-      </span>
-      <span className="description">{description}</span>
+      <div className="book-title-and-author">
+        <h3>{title}</h3>
+        <p>
+          <span className={genreColor(genre)}>{genre}</span>{" "}
+          <small>by {author}</small>
+        </p>
+      </div>
       {userBooksPage ? renderButtons() : renderBuyNow()}
     </div>
   );
