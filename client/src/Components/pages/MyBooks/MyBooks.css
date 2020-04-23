@@ -4,16 +4,23 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 4%;
+  /* margin-top: 4%; */
+  padding: 2% 0;
+  border: 1px solid black;
+  box-sizing: border-box;
 }
 .my-book {
-  width: 85%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 100%;
   display: flex;
   flex-flow: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .my-book .book-form {
+  /* position: ; */
   height: 50vh;
   display: flex;
   justify-content: center;

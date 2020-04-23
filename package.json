@@ -26,7 +26,8 @@
     "express-validator": "^6.3.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.12",
-    "nodemailer": "^6.4.6"
+    "nodemailer": "^6.4.6",
+    "react-modal": "^3.11.2"
   },
   "devDependencies": {
     "concurrently": "^5.0.0",

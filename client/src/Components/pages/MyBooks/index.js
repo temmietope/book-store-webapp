@@ -20,13 +20,25 @@ const MyBooks = () => {
     }
     //eslint-disable-next-line
   }, [isAuthenticated]);
+  const renderNoBooks = () => {
+    return (
+      <div>
+        You have not uploaded any book yet. Get started! The world needs to read
+        yours!
+      </div>
+    );
+  };
   return (
     <div className="my-book-wrapper">
       <div className="my-book">
         <div className="book-form">
           <BookForm />
         </div>
-        {books !== null && !loading ? (
+        {loading ? (
+          <Spinner />
+        ) : books !== null && books.length === 0 ? (
+          renderNoBooks()
+        ) : books !== null && !loading ? (
           <TransitionGroup>
             {filtered !== null ? (
               <MyBooksList books={filtered} />
@@ -36,9 +48,6 @@ const MyBooks = () => {
           </TransitionGroup>
         ) : (
           <Spinner />
-        )}
-        {books !== null && books.length === 0 && !loading && (
-          <div>No book for sale right now.</div>
         )}
       </div>
     </div>
