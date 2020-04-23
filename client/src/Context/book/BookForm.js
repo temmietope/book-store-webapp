@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import BookContext from "../../Context/book/bookContext";
 
-const BookForm = () => {
+const BookForm = ({ onRequestClose }) => {
   const bookContext = useContext(BookContext);
   const { addBook, current, clearCurrent, updateBook } = bookContext;
 
@@ -13,7 +13,7 @@ const BookForm = () => {
         title: "",
         author: "",
         description: "",
-        genre: "general"
+        genre: "general",
       });
     }
   }, [bookContext, current]);
@@ -21,21 +21,22 @@ const BookForm = () => {
     title: "",
     author: "",
     description: "",
-    genre: "general"
+    genre: "general",
   });
 
   const { title, author, description, genre } = book;
-  const onChange = e => {
+  const onChange = (e) => {
     setBook({ ...book, [e.target.name]: e.target.value });
   };
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    if(current=== null){
+    if (current === null) {
       addBook(book);
-    }else{
-      updateBook(book)
+    } else {
+      updateBook(book);
     }
-    clearAll()
+    clearAll();
+    onRequestClose();
   };
   const clearAll = () => {
     clearCurrent();
@@ -69,7 +70,7 @@ const BookForm = () => {
         <div className="select-genre">
           <select
             name="genre"
-            onChange={e => {
+            onChange={(e) => {
               onChange(e);
             }}
             value={genre}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TransitionGroup } from "react-transition-group";
 import { withRouter } from "react-router-dom";
 import BookContext from "../../../Context/book/bookContext";
@@ -7,6 +7,9 @@ import BookForm from "../../../Context/book/BookForm";
 import MyBooksList from "./MyBooksList";
 import Spinner from "../../layouts/Spinner";
 import "./MyBooks.css";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root");
 
 const MyBooks = () => {
   const bookContext = useContext(BookContext);
@@ -20,6 +23,16 @@ const MyBooks = () => {
     }
     //eslint-disable-next-line
   }, [isAuthenticated]);
+
+  const [addModalIsOpen, setAddModalIsOpen] = useState(false);
+
+  const openAddModal = () => {
+    setAddModalIsOpen(true);
+  };
+  const closeAddModal = () => {
+    setAddModalIsOpen(false);
+  };
+
   const renderNoBooks = () => {
     return (
       <div>
@@ -32,8 +45,11 @@ const MyBooks = () => {
     <div className="my-book-wrapper">
       <div className="my-book">
         <div className="book-form">
-          <BookForm />
+          <Modal className="modal" isOpen={addModalIsOpen}>
+            <BookForm onRequestClose={closeAddModal} />
+          </Modal>
         </div>
+        <div><button onClick={openAddModal}>Edit</button></div>
         {loading ? (
           <Spinner />
         ) : books !== null && books.length === 0 ? (
