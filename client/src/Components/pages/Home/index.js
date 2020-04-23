@@ -10,7 +10,7 @@ const Home = () => {
       <div className="home-wrapper">
         <div className="book-list">
           <span className="filter-region">
-            <BookFilter />
+            <BookFilter routelink="home" />
             <i className="fas fa-search"></i>
           </span>
           <span className="books-region">

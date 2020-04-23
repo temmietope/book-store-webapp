@@ -20,10 +20,16 @@ const BookFilter = props => {
   });
   const onChange = e => {
     if (text.current.value !== "") {
-      if (props.history.location.pathname !== "/") {
-        filterBooks(e.target.value);
-      }
+      if(props.routelink === 'home'){
       filterAllBooks(e.target.value);
+      }
+      if(props.routelink === 'mybooks'){
+        filterBooks(e.target.value);
+        }
+      // if (props.history.location.pathname !== "/") {
+      //   filterBooks(e.target.value);
+      // }
+      // filterAllBooks(e.target.value);
     } else {
       clearFilter();
     }

@@ -4,7 +4,7 @@ import BookContext from "../../Context/book/bookContext";
 import AuthContext from "../../Context/auth/authContext";
 import { withRouter } from "react-router-dom";
 
-const BookItem = ({ book, ...props }) => {
+const BookItem = ({ book, openAddModal, ...props }) => {
   const bookContext = useContext(BookContext);
   const authContext = useContext(AuthContext);
   const [userBooksPage, setUserBooksPage] = useState(false);
@@ -49,7 +49,13 @@ const BookItem = ({ book, ...props }) => {
   const renderButtons = () => {
     return (
       <p className="buttons">
-        <button className="btn edit-btn" onClick={() => setCurrent(book)}>
+        <button
+          className="btn edit-btn"
+          onClick={() => {
+            openAddModal();
+            setCurrent(book);
+          }}
+        >
           <i className="far fa-edit" />
         </button>
         <button className="btn delete-btn" onClick={onDelete}>

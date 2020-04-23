@@ -5,7 +5,7 @@
   align-items: center;
   background: rgb(202, 22, 238);
   z-index: 1;
-  position: sticky;
+  position: fixed;
   top: 0;
   padding: 0 5%;
   box-sizing: border-box;
