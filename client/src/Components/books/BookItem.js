@@ -56,10 +56,12 @@ const BookItem = ({ book, openAddModal, ...props }) => {
             setCurrent(book);
           }}
         >
-          <i className="far fa-edit" />
+          Edit
+          {/* <i className="far fa-edit" /> */}
         </button>
         <button className="btn delete-btn" onClick={onDelete}>
-          <i className="far fa-trash-alt" />
+          Delete
+          {/* <i className="far fa-trash-alt" /> */}
         </button>
       </p>
     );

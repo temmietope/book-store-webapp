@@ -44,13 +44,13 @@ const MyBooks = () => {
   };
   return (
     <div className="my-book-wrapper">
-      <div className="my-book">
+      {/* <div className="my-book"> */}
         {/* <div className="book-form"> */}
         <Modal className="modal" isOpen={addModalIsOpen}>
             <BookForm onRequestClose={closeAddModal} />
           </Modal>
         {/* </div> */}
-        <div>
+        <div className="add-new-book-button">
           <button onClick={openAddModal}>Add new book</button>
         </div>
         {loading ? (
@@ -58,20 +58,17 @@ const MyBooks = () => {
         ) : books !== null && books.length === 0 ? (
           renderNoBooks()
         ) : books !== null && !loading ? (
-          <div>
-            
-            <TransitionGroup>
+            <TransitionGroup className="trans">
               {filtered !== null ? (
                 <MyBooksList books={filtered} openAddModal={openAddModal} />
               ) : (
                 <MyBooksList books={books} openAddModal={openAddModal} />
               )}
             </TransitionGroup>
-          </div>
         ) : (
           <Spinner />
         )}
-      </div>
+      {/* </div> */}
     </div>
   );
 };
