@@ -44,30 +44,27 @@ const MyBooks = () => {
   };
   return (
     <div className="my-book-wrapper">
-      {/* <div className="my-book"> */}
-        {/* <div className="book-form"> */}
-        <Modal className="modal" isOpen={addModalIsOpen}>
-            <BookForm onRequestClose={closeAddModal} />
-          </Modal>
-        {/* </div> */}
-        <div className="add-new-book-button">
-          <button onClick={openAddModal}>Add new book</button>
-        </div>
-        {loading ? (
-          <Spinner />
-        ) : books !== null && books.length === 0 ? (
-          renderNoBooks()
-        ) : books !== null && !loading ? (
-            <TransitionGroup className="trans">
-              {filtered !== null ? (
-                <MyBooksList books={filtered} openAddModal={openAddModal} />
-              ) : (
-                <MyBooksList books={books} openAddModal={openAddModal} />
-              )}
-            </TransitionGroup>
-        ) : (
-          <Spinner />
-        )}
+      <Modal className="modal" isOpen={addModalIsOpen}>
+        <BookForm onRequestClose={closeAddModal} />
+      </Modal>
+      <div className="add-new-book-button">
+        <button onClick={openAddModal}>Add new book</button>
+      </div>
+      {loading ? (
+        <Spinner />
+      ) : books !== null && books.length === 0 ? (
+        renderNoBooks()
+      ) : books !== null && !loading ? (
+        <TransitionGroup className="trans">
+          {filtered !== null ? (
+            <MyBooksList books={filtered} openAddModal={openAddModal} />
+          ) : (
+            <MyBooksList books={books} openAddModal={openAddModal} />
+          )}
+        </TransitionGroup>
+      ) : (
+        <Spinner />
+      )}
       {/* </div> */}
     </div>
   );
