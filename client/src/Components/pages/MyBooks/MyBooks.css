@@ -21,121 +21,117 @@
   outline: none;
   font-size: 1.2rem;
 }
-.my-book .book-form {
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  box-sizing: border-box;
-  width: 50%;
-  margin-bottom: 100px;
-}
-.my-book .book-form h2 {
-  font-size: 28px;
-  text-align: left;
-  margin: 0;
-  color: rgba(65, 60, 60, 0.877);
-}
-.my-book .book-form form {
+.modal{
+  background-color: #fff;
   width: 100%;
+  height: 90vh;
+  margin-top: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column;
-  box-sizing: border-box;
 }
-.my-book .book-form form .input-new-book {
+.modal form{
+  background: rgba(202, 22, 238, 0.288);
+  border: 1px solid rgba(202, 22, 238, 0.288);
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  height: 70%;
+  padding: 1rem;
   box-sizing: border-box;
-  width: 70%;
 }
-.my-book .book-form form .input-new-book input {
-  width: 100%;
-  padding: 7px;
-  margin: 5px;
-  border: none;
-  outline: none;
-  font-family: DM Sans;
-  font-size: 15px;
+.modal form header{
+  height: 10%;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgb(202, 22, 238);
+
 }
-.my-book.book-form form .input-new-book input:focus {
-  color: red;
-  outline: none;
-  border-bottom: 2px solid red;
-}
-.my-book .book-form form .input-new-book ::placeholder {
-  font-family: DM Sans;
-  font-size: 15px;
-  color: rgba(128, 128, 128, 0.767);
-}
-.my-book .book-form form .input-new-book h5 {
+.modal form h2{
+  font-size: 1.5rem;
+  font-family: 'DM Sans';
+  padding: 0;
   margin: 0;
-  font-size: 15px;
-  margin-right: auto;
-  margin-bottom: 5px;
+}
+.modal form .input-new-book{
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
+  width: 100%;
+}
+.modal form input {
+  background: white;
+  border: 2px solid rgb(202, 22, 238);
+  box-sizing: border-box;
+  padding: 0.5rem;
+  font-size: 1.125rem;
+  outline: none;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  font-family: 'DM Sans';
+  width: 100%;
+  border-radius: 0;
+  -webkit-border-radius: 0px;
+}
+.modal form input ::placeholder,
+::-webkit-input-placeholder {
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  font-family: 'DM Sans';
+  mix-blend-mode: normal;
+  opacity: 0.8;
 }
 
-.my-book .book-form form .input-new-book .select-genre {
-  margin: 0;
-  margin-right: auto;
+.modal form textarea {
+  background: white;
+  resize: none;
+  width: 100%;
   outline: none;
-  color: rgba(128, 128, 128, 0.767);
-  width: 100%;
-}
-.my-book .book-form form .input-new-book .select-genre select {
+  padding: 0.5rem;
+  box-sizing: border-box;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  border-radius: 0;
+  -webkit-border-radius: 0px;
+  font-family: 'DM Sans';
   outline: none;
-  font-size: 15px;
-  color: rgba(128, 128, 128, 0.767);
-  width: 100%;
-  border: none;
-  padding: 10px;
-}
-.my-book .book-form form .submit-book-div {
-  width: 100%;
-  margin-top: 10px;
-}
-.my-book .book-form form .submit-book {
-  width: 100%;
-  border: none;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  background: rgb(243, 159, 173);
-  font-family: DM Sans;
-  font-weight: bolder;
-  outline: none;
-  color: white;
-  font-size: 15px;
-}
-.my-book .book-form form .submit-book button {
-  outline: none;
-  color: white;
-  background: rgb(243, 159, 173);
-  width: 100%;
-}
-.my-book .book-form form .clear-book-div {
-  width: 100%;
-}
-.my-book .book-form form .clear-book {
-  width: 100%;
-  border: none;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 4px;
-  background: red;
-  font-family: DM Sans;
-  font-weight: bolder;
-  outline: none;
-  color: white;
-  font-size: 15px;
+  border: 2px solid rgb(202, 22, 238);
 }
 
+.modal form textarea ::placeholder,
+::-webkit-input-placeholder {
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  font-family: 'DM Sans';
+  mix-blend-mode: normal;
+  opacity: 0.8;
+}
 
-
-
+.modal form select {
+  background: white;
+  border: 2px solid rgb(202, 22, 238);
+  box-sizing: border-box;
+  padding: 0.5rem;
+  outline: none;
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  font-family: 'DM Sans';
+  width: 100%;
+  border-radius: 0;
+  -webkit-border-radius: 0px;
+}
+.submit-or-clear{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
 .trans {
   display: flex;
