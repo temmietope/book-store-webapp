@@ -65,7 +65,6 @@ const MyBooks = () => {
       ) : (
         <Spinner />
       )}
-      {/* </div> */}
     </div>
   );
 };
