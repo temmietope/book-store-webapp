@@ -48,7 +48,6 @@ router.get("/cart", auth, async (req, res) => {
   }
   try {
     const cartList = await CartItem.find({ ...params }).sort({ date: -1 });
-    console.log(cartList)
     res.json(cartList);
   } catch (err) {
     console.error(err.message);
@@ -64,13 +63,9 @@ router.post(
   [
     auth,
     [
-      check("title", "Title is required")
-        .not()
-        .isEmpty(),
-      check("author", "Author is required")
-        .not()
-        .isEmpty()
-    ]
+      check("title", "Title is required").not().isEmpty(),
+      check("author", "Author is required").not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -85,7 +80,7 @@ router.post(
         author,
         description,
         genre,
-        user: req.user.id
+        user: req.user.id,
       });
       const book = await newBook.save();
       res.json(book);
@@ -107,7 +102,7 @@ router.post("/cart", auth, async (req, res) => {
       author,
       description,
       genre,
-      user: req.user.id
+      user: req.user.id,
     });
 
     const cartItem = await newCartItem.save();
@@ -125,13 +120,9 @@ router.put(
   [
     auth,
     [
-      check("title", "Title is required")
-        .not()
-        .isEmpty(),
-      check("author", "Author is required")
-        .not()
-        .isEmpty()
-    ]
+      check("title", "Title is required").not().isEmpty(),
+      check("author", "Author is required").not().isEmpty(),
+    ],
   ],
   async (req, res) => {
     const errors = validationResult(req);
