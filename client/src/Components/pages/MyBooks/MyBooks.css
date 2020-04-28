@@ -1,7 +1,7 @@
 .my-book-wrapper {
   width: 100%;
   width: 100%;
-  margin-top:10vh;
+  margin-top: 10vh;
   padding: 5%;
   box-sizing: border-box;
 }
@@ -11,7 +11,7 @@
   /* height: 5vh; */
   box-sizing: border-box;
 }
-.add-new-book-button button{
+.add-new-book-button button {
   border: none;
   padding: 1rem 2rem;
   background: rgba(202, 22, 238, 0.288);
@@ -21,7 +21,7 @@
   outline: none;
   font-size: 1.2rem;
 }
-.modal{
+.modal {
   background-color: #fff;
   width: 100%;
   height: 90vh;
@@ -30,7 +30,7 @@
   justify-content: center;
   align-items: center;
 }
-.modal form{
+.modal form {
   background: rgba(202, 22, 238, 0.288);
   border: 1px solid rgba(202, 22, 238, 0.288);
   display: flex;
@@ -42,19 +42,18 @@
   padding: 1rem;
   box-sizing: border-box;
 }
-.modal form header{
+.modal form header {
   height: 10%;
   box-sizing: border-box;
   border-bottom: 2px solid rgb(202, 22, 238);
-
 }
-.modal form h2{
+.modal form h2 {
   font-size: 1.5rem;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   padding: 0;
   margin: 0;
 }
-.modal form .input-new-book{
+.modal form .input-new-book {
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -71,7 +70,7 @@
   outline: none;
   line-height: 1.25rem;
   letter-spacing: -0.028125rem;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   width: 100%;
   border-radius: 0;
   -webkit-border-radius: 0px;
@@ -81,7 +80,7 @@
   font-size: 1.125rem;
   line-height: 1.25rem;
   letter-spacing: -0.028125rem;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   mix-blend-mode: normal;
   opacity: 0.8;
 }
@@ -98,7 +97,7 @@
   letter-spacing: -0.028125rem;
   border-radius: 0;
   -webkit-border-radius: 0px;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   outline: none;
   border: 2px solid rgb(202, 22, 238);
 }
@@ -108,7 +107,7 @@
   font-size: 1.125rem;
   line-height: 1.25rem;
   letter-spacing: -0.028125rem;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   mix-blend-mode: normal;
   opacity: 0.8;
 }
@@ -122,12 +121,12 @@
   font-size: 1.125rem;
   line-height: 1.25rem;
   letter-spacing: -0.028125rem;
-  font-family: 'DM Sans';
+  font-family: "DM Sans";
   width: 100%;
   border-radius: 0;
   -webkit-border-radius: 0px;
 }
-.submit-or-clear{
+.submit-or-clear {
   display: flex;
   width: 100%;
   justify-content: space-between;
