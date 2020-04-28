@@ -8,7 +8,6 @@
 .add-new-book-button {
   width: 100%;
   margin-bottom: 5%;
-  /* height: 5vh; */
   box-sizing: border-box;
 }
 .add-new-book-button button {
@@ -16,7 +15,7 @@
   padding: 1rem 2rem;
   background: rgba(202, 22, 238, 0.288);
   border-radius: 5px;
-  border: 1px solid rgba(202, 22, 238, 0.288);
+  border: 2px solid rgb(202, 22, 238);
   color: white;
   outline: none;
   font-size: 1.2rem;
@@ -38,14 +37,13 @@
   justify-content: space-between;
   align-items: center;
   width: 30%;
-  height: 70%;
+  height: 80%;
   padding: 1rem;
   box-sizing: border-box;
 }
 .modal form header {
   height: 10%;
   box-sizing: border-box;
-  border-bottom: 2px solid rgb(202, 22, 238);
 }
 .modal form h2 {
   font-size: 1.5rem;
@@ -61,7 +59,7 @@
   height: 70%;
   width: 100%;
 }
-.modal form input {
+.modal form input[type="text"] {
   background: white;
   border: 2px solid rgb(202, 22, 238);
   box-sizing: border-box;
@@ -127,34 +125,24 @@
   -webkit-border-radius: 0px;
 }
 .submit-or-clear {
+  height: 20%;
   display: flex;
   width: 100%;
-  justify-content: space-between;
-}
-
-.trans {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-  height: inherit;
-  padding: 0;
-}
-.book-card {
-  flex: 0 0 30%;
-  height: 15vh;
-  display: grid;
-  grid-template-columns: 68% 28%;
-  grid-gap: 4%;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
-  padding: 0.5rem;
+}
+.submit-or-clear input.form-btn {
+  background: white;
+  border: 2px solid rgb(202, 22, 238);
   box-sizing: border-box;
-  background-color: white;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(202, 22, 238, 0.288);
+  padding: 0.5rem;
+  font-size: 1.125rem;
+  outline: none;
+  line-height: 1.25rem;
+  letter-spacing: -0.028125rem;
+  font-family: "DM Sans";
+  border-radius: 0;
+  -webkit-border-radius: 0px;
 }
 .book-title-and-author {
   display: grid;
