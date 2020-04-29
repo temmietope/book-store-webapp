@@ -36,16 +36,6 @@ const Cart = () => {
   //   return compressed;
   // };
 
-
-const countCart = (cart)=>{
-  let count = {}
-  cart.forEach(function(i) { count[i].title = (count[i].title||0) + 1;});
-console.log(count);
-}
-
-
-
-
   return (
     <div>
       <h2>Cart</h2>
@@ -54,14 +44,11 @@ console.log(count);
         <Spinner />
       ) : (
         <div>
-          {cart && countCart(cart)
+          {cart &&
             // cart && compressArray(cart)
-            // cart.map((cartItem, index) => {
-            //   return <CartItem key={index} cartItem={cartItem} />;
-            // })
-            
-
-           
+            cart.map((cartItem, index) => {
+              return <CartItem key={index} cartItem={cartItem} />;
+            })
           }
         </div>
       )}
