@@ -6,13 +6,13 @@
   height: inherit;
 }
 .trans {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-column-gap: 5%;
   width: 100%;
   height: inherit;
   padding: 0;
+  box-sizing: border-box;
 }
 .book-card {
   flex: 0 0 30%;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   background-color: white;
   margin-bottom: 1rem;
-  border: 1px solid rgba(202, 22, 238, 0.288);
+  border: 2px solid rgb(202, 22, 238);
 }
 .book-title-and-author {
   display: grid;
@@ -93,14 +93,13 @@
   padding: 0.5rem;
   background: rgba(202, 22, 238, 0.288);
   border-radius: 5px;
-  border: 1px solid rgba(202, 22, 238, 0.288);
+  border: 2px solid rgb(202, 22, 238);
   color: white;
   font-weight: bolder;
   font-size: 0.6rem;
   margin: 0.2rem 0;
   outline: none;
   font-family: DM Sans;
-
 }
 .book-card .buttons .delete-btn {
   background: rgba(212, 34, 34, 0.288);
@@ -111,8 +110,9 @@
   padding: 0.5rem;
   background: rgba(202, 22, 238, 0.288);
   border-radius: 5px;
-  border: 1px solid rgba(202, 22, 238, 0.288);
+  border: 2px solid rgb(202, 22, 238);
   color: white;
   font-weight: bolder;
   font-size: 0.6rem;
+  outline: none;
 }

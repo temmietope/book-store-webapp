@@ -41,6 +41,9 @@ const BookForm = ({ onRequestClose }) => {
   const clearAll = () => {
     clearCurrent();
   };
+  const closeModal = () => {
+    onRequestClose();
+  };
   return (
     <form onSubmit={onSubmit}>
       <header>
@@ -82,23 +85,33 @@ const BookForm = ({ onRequestClose }) => {
         </select>
       </div>
       <div className="submit-or-clear">
-        <div className="submit-book-div">
-          <input
-            type="submit"
-            value={current ? "Update Book" : "Add Book"}
-            className="submit-book"
-          />
-        </div>
+        <input
+          type="submit"
+          value={current ? "Update Book" : "Add Book"}
+          className="submit-book form-btn"
+        />
+        <input
+          type="button"
+          onClick={closeModal}
+          className="clear-book form-btn"
+          value="Back"
+        />
         {current && (
           <div className="clear-book-div">
             <input
               type="button"
               onClick={clearAll}
-              className="clear-book"
+              className="clear-book form-btn"
               value="Clear"
             />
           </div>
         )}
+        {/* <input
+          type="button"
+          onClick={onRequestClose()}
+          className="clear-book"
+          value="Back"
+        /> */}
       </div>
     </form>
   );
