@@ -14,16 +14,9 @@ const BookItem = ({ book, openAddModal, ...props }) => {
       setUserBooksPage(true);
     }
   }, [props.history.location.pathname]);
-  const {
-    deleteBook,
-    setCurrent,
-    clearCurrent,
-    addToCart,
-    cart,
-    books,
-  } = bookContext;
+  const { deleteBook, setCurrent, clearCurrent, addToCart } = bookContext;
   const { isAuthenticated } = authContext;
-  const { _id, title, description, author, genre } = book;
+  const { _id, title, author, genre } = book;
   const genreColor = (genre) => {
     if (genre === "horror") {
       return "type type-blue";

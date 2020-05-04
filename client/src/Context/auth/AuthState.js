@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer } from "react";
 import AuthContext from "./authContext";
 import axios from "axios";
 import authReducer from "./authReducer";
@@ -12,7 +12,6 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   CLEAR_ERRORS,
-  FORGOT_PASSWORD,
 } from "../types";
 
 const AuthState = (props) => {
@@ -100,11 +99,7 @@ const AuthState = (props) => {
       },
     };
     try {
-      const res = await axios.post(
-        "/api/auth/forgot_password",
-        formData,
-        config
-      );
+      await axios.post("/api/auth/forgot_password", formData, config);
     } catch (err) {
       dispatch({
         type: AUTH_ERROR,
@@ -121,13 +116,13 @@ const AuthState = (props) => {
       },
     };
     try {
-      const token = window.location.search.replace('?token=', '')
+      const token = window.location.search.replace("?token=", "");
       const res = await axios.post(
         `/api/auth/reset_password?token=${token}`,
         formData,
         config
       );
-      console.log(res)
+      console.log(res);
     } catch (err) {
       dispatch({
         type: AUTH_ERROR,

@@ -19,7 +19,7 @@ const App = () => {
   const authContext = useContext(AuthContext);
   const bookContext = useContext(BookContext);
   const { loadUser, loading } = authContext;
-  const { getAllBooks, cart } = bookContext;
+  const { getAllBooks } = bookContext;
   useEffect(() => {
     async function fetchUser() {
       getAllBooks();

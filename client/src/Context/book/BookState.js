@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useContext } from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import BookContext from "./bookContext";
 import bookReducer from "./bookReducer";
@@ -17,7 +17,6 @@ import {
   FILTER_ALL_BOOKS,
   CLEAR_FILTER,
   ADD_TO_CART,
-  DELETE_FROM_CART,
 } from "../types";
 
 const BookState = (props) => {

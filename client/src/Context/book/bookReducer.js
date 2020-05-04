@@ -13,7 +13,6 @@ import {
   CLEAR_FILTER,
   BOOK_ERROR,
   CLEAR_BOOKS,
-  CLEAR_ALL_BOOK_HISTORY,
 } from "../types";
 
 export default (state, action) => {
@@ -64,7 +63,7 @@ export default (state, action) => {
         error: null,
         current: null,
         loading: false,
-        cart: null
+        cart: null,
       };
     case UPDATE_BOOK:
       return {

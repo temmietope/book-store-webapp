@@ -8,7 +8,6 @@ import MyBooksList from "./MyBooksList";
 import Spinner from "../../layouts/Spinner";
 import "./MyBooks.css";
 import Modal from "react-modal";
-import BookFilter from "../../../Context/book/BookFilter";
 
 Modal.setAppElement("#root");
 
